@@ -51,10 +51,10 @@ export const Header: FC = ({children}) => {
 					</div>
 				</div>
 			</div>
-			<div className="absolute top-8 right-8">
+			<div className="z-20 absolute top-8 right-8">
 				<div
 					title={`Turn ${theme === 'light' ? "off" : "on"} the lights`}
-					className={clsx("rounded-full border-2 h-8 w-8 flex justify-center items-center", {
+					className={clsx("z-20 rounded-full border-2 h-8 w-8 flex justify-center items-center", {
 						"bg-gray-800": theme === "light",
 						"bg-gray-100": theme === "dark"
 					})}
