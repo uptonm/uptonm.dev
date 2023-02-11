@@ -12,7 +12,7 @@ export const Body = () => {
     bio: `Hi! I'm Mike. I am a Boston based Software Engineer currently working as a contractor for Meta. 
 		My interests in software are majorly in the web space, including React, TypeScript, & Rust. In the 
 		little free time that I have I enjoy snowboarding, travel, attending concerts & music festivals, as 
-		well as a bit of music production/DJing.`,
+		well as a bit of music production.`,
     workExperience: [
       {
         role: "Full Stack Software Engineer II",
