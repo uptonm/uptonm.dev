@@ -32,7 +32,7 @@ export const Body = () => {
       {
         role: "Full Stack Software Engineer",
         location: "Infogain for Facebook - Cambridge, MA",
-        startDate: new Date("08/01/2019"),
+        startDate: new Date("08/01/2020"),
         endDate: new Date("07/31/2022"),
         description: `Coordinate with a team during COVID-19 pandemic to build a platform out from scratch to manage the internal needs
 					of the company’s global fiber optic footprint. Create end to end user experiences using React, TypeScript, Redux,
