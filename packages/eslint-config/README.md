@@ -1,3 +1,1 @@
-# `@turbo/eslint-config`
-
-Collection of internal eslint configurations.
+# `@uptonm/eslint-config`

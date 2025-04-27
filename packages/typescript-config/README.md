@@ -1,0 +1,1 @@
+# `@uptonm/typescript-config`
