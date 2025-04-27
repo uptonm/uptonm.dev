@@ -1,9 +1,8 @@
 "use client";
 
-import { useTheme } from "@uptonm/ui/components/utils/theme-provider";
 import { ThemeToggle } from "@uptonm/ui/components/utils/theme-toggle";
 import Image, { StaticImageData } from "next/image";
-import { ReactNode, useCallback } from "react";
+import { ReactNode } from "react";
 
 export type SocialLink = {
   title: string;
@@ -36,12 +35,6 @@ export function Header({
   currentRole,
   socialLinks,
 }: HeaderProps) {
-  const { theme, setTheme } = useTheme();
-
-  const toggleTheme = useCallback(() => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }, [theme, setTheme]);
-
   return (
     <div className="shadow-md">
       <div className="w-full py-8 bg-white dark:bg-gray-800 relative">

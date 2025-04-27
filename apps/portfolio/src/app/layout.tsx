@@ -4,13 +4,13 @@ import { ThemeProvider } from "@uptonm/ui/components/utils/theme-provider";
 
 import { Poppins, Noto_Sans } from "next/font/google";
 
-export const poppins = Poppins({
+const poppins = Poppins({
   weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-poppins",
 });
 
-export const noto_sans = Noto_Sans({
+const noto_sans = Noto_Sans({
   weight: ["400"],
   subsets: ["latin"],
   style: ["normal", "italic"],
