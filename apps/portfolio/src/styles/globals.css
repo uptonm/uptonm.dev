@@ -8,7 +8,7 @@
  * if you ever need to explicitly add a source that's excluded by default, 
  * you can always add it with the @source directive.
  */
-@source '../../../node_modules/@uptonm/ui';
+@source "../../node_modules/@uptonm/ui/**/*.{tsx, ts}";
 
 @theme inline {
   --font-heading: var(--font-poppins), sans-serif;
