@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@uptonm/ui/components/utils/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
 
-import { Poppins, Noto_Sans } from "next/font/google";
+import { Noto_Sans, Poppins } from "next/font/google";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600"],
@@ -53,6 +55,8 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

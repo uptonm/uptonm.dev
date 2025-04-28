@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@uptonm/ui": "workspace:*",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "dayjs": "^1.11.13",
     "next": "^15.2.4",
     "react": "^19.0.0",
