@@ -40,17 +40,33 @@ const socialLinks: SocialLink[] = [
     ),
   },
 ];
-const bio = `Hi! I'm Mike. I am a Boston based Software Engineer currently working as a contractor for Meta.
+const bio = `Hi! I'm Mike. I am a Boston based Software Engineer currently working at Meta.
   My interests in software are majorly in the web space, including React, TypeScript, & Rust. In the
   little free time that I have I enjoy snowboarding, travel, attending concerts & music festivals, as
   well as a bit of music production.`;
 const workExperienceItems: WorkExperienceItem[] = [
   {
+    key: "meta-direct",
+    role: "Full Stack Software Engineer",
+    location: "Meta - Cambridge, MA",
+    startDate: new Date("01/01/2025"),
+    endDate: undefined,
+    description: `Support a team of 10 software engineers building products to help Meta scale its global
+    telecommunications network at industry leading rates. Interface directly with stakeholders to translate
+    business requirements into technical solutions, driving the development of full-stack features across
+    Meta's OSS/BSS/NMS platform using React, TypeScript, GraphQL, PostgreSQL, and Rust.`,
+    keyPoints: [
+      `Collaborate with cross-functional stakeholders to define product roadmaps and prioritize features that accelerate the expansion of Meta's global telecom infrastructure.`,
+      `Support and mentor a team of 10 engineers, facilitating technical design reviews and establishing best practices for scalable full-stack development.`,
+      `Drive the continued evolution of Meta's internal telecom platform, delivering tooling that enables network deployment at industry leading velocity.`,
+    ],
+  },
+  {
     key: "meta-method-dev",
     role: "Full Stack Software Engineer II",
     location: "Method Dev for Meta - Cambridge, MA",
     startDate: new Date("08/01/2022"),
-    endDate: undefined,
+    endDate: new Date("12/31/2024"),
     description: `Work on a team within Meta, building an OSS/BSS/NMS system to manage Meta's extensive global
     telecom footprint. Day to day involves building out full stack, user facing features using React, Typescript,
     GraphQL, Hasura, PostgreSQL, Golang & Rust.`,
