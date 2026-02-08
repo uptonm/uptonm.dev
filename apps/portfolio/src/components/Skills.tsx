@@ -4,33 +4,27 @@ import { StringToHslColor } from "@/lib/utils";
 import { Card } from "@uptonm/ui/components/base/card";
 import { useTheme } from "@uptonm/ui/components/utils/theme-provider";
 
-function SkillsItem({ skill }: { skill: string }) {
+function SkillPill({ skill }: { skill: string }) {
   const { theme } = useTheme();
 
   return (
-    <li key={skill} className="inline">
-      <a
-        href="#"
-        className="relative inline-flex items-center rounded-full border border-gray-300 dark:border-gray-500 px-3 py-0.5 dark:bg-gray-600"
-      >
-        <div className="absolute flex-shrink-0 flex items-center justify-center">
-          <span
-            style={{
-              backgroundColor: StringToHslColor(
-                skill,
-                theme === "dark" ? 75 : 60,
-                50
-              ),
-            }}
-            className="h-2 w-2 rounded-full"
-            aria-hidden="true"
-          />
-        </div>
-        <div className="ml-3.5 text-sm font-medium text-gray-900 dark:text-gray-300">
+    <li className="inline-block">
+      <span className="inline-flex items-center gap-2 rounded-full bg-white/40 dark:bg-white/[0.08] backdrop-blur-sm border border-white/60 dark:border-white/[0.1] px-3.5 py-1.5 transition-colors duration-200 hover:bg-white/60 dark:hover:bg-white/[0.14]">
+        <span
+          style={{
+            backgroundColor: StringToHslColor(
+              skill,
+              theme === "dark" ? 80 : 65,
+              50
+            ),
+          }}
+          className="h-2 w-2 rounded-full flex-shrink-0"
+          aria-hidden="true"
+        />
+        <span className="text-sm font-medium text-foreground">
           {skill}
-        </div>
-      </a>
-      &nbsp;
+        </span>
+      </span>
     </li>
   );
 }
@@ -42,9 +36,9 @@ export type SkillsProps = {
 export function Skills({ items }: SkillsProps) {
   return (
     <Card title="Skills">
-      <ul className="leading-8">
+      <ul className="flex flex-wrap gap-2" role="list">
         {items.map((skill) => (
-          <SkillsItem key={skill} skill={skill} />
+          <SkillPill key={skill} skill={skill} />
         ))}
       </ul>
     </Card>
