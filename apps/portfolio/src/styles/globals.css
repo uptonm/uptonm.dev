@@ -5,7 +5,7 @@
  * Tailwind CSS official document:
  * https://tailwindcss.com/docs/detecting-classes-in-source-files
  *
- * if you ever need to explicitly add a source that's excluded by default, 
+ * if you ever need to explicitly add a source that's excluded by default,
  * you can always add it with the @source directive.
  */
 @source "../../node_modules/@uptonm/ui/**/*.{tsx, ts}";
@@ -14,11 +14,15 @@
   --font-heading: var(--font-poppins), sans-serif;
   --font-body: var(--font-noto-sans), sans-serif;
   --font-mono: var(--font-noto-sans), monospace;
+  --animate-float-1: float-1 20s ease-in-out infinite;
+  --animate-float-2: float-2 25s ease-in-out infinite;
+  --animate-float-3: float-3 30s ease-in-out infinite;
 }
 
 :root {
   html {
     font-family: var(--font-body);
+    scroll-behavior: smooth;
   }
 
   h1,
@@ -35,5 +39,91 @@
   a,
   li {
     font-family: var(--font-body);
+  }
+}
+
+/* Floating orb animations for gradient background */
+@keyframes float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -50px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.97);
+  }
+  75% {
+    transform: translate(15px, -30px) scale(1.02);
+  }
+}
+
+@keyframes float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-40px, 30px) scale(1.08);
+  }
+  50% {
+    transform: translate(30px, -40px) scale(0.94);
+  }
+  75% {
+    transform: translate(-25px, 15px) scale(1.03);
+  }
+}
+
+@keyframes float-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, 40px) scale(0.96);
+  }
+  50% {
+    transform: translate(-30px, -30px) scale(1.06);
+  }
+  75% {
+    transform: translate(35px, -15px) scale(0.98);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar for glass aesthetic */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.5 0.05 280 / 30%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.5 0.05 280 / 50%);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: oklch(0.55 0.25 280 / 30%);
+    color: inherit;
   }
 }

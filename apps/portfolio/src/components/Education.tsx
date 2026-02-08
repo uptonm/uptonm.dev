@@ -1,7 +1,9 @@
 "use client";
 
+import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
 import { Card } from "@uptonm/ui/components/base/card";
+import { GraduationCap } from "lucide-react";
 
 export type EducationItem = {
   key: string;
@@ -11,20 +13,22 @@ export type EducationItem = {
   endDate?: Date;
 };
 
-function EducationItem({ item }: { item: EducationItem }) {
+function EducationEntry({ item }: { item: EducationItem }) {
   return (
-    <div className="flex items-start w-full">
-      <i className="fas fa-graduation-cap text-gray-600 mt-1 dark:text-white" />
-      <div className="flex flex-col items-stretch ml-2 w-full">
-        <div className="flex flex-col sm:flex-row lg:flex-col 2xl:flex-row justify-between w-full">
-          <h4 className="text-md font-bold text-gray-500 dark:text-gray-300 whitespace-nowrap">
+    <div className="flex items-start w-full gap-3">
+      <div className="mt-0.5 rounded-lg bg-primary/10 dark:bg-primary/20 p-2 flex-shrink-0">
+        <GraduationCap className="h-5 w-5 text-primary" aria-hidden="true" />
+      </div>
+      <div className="flex flex-col items-stretch w-full min-w-0">
+        <div className="flex flex-col sm:flex-row lg:flex-col 2xl:flex-row justify-between w-full gap-1">
+          <h3 className="text-base font-semibold text-foreground">
             {item.degree}
-          </h4>
-          <p className="text-md font-hairline text-gray-500 dark:text-gray-300">
+          </h3>
+          <p className="text-sm text-muted-foreground tabular-nums whitespace-nowrap">
             {renderDateRange(item.startDate, item.endDate)}
           </p>
         </div>
-        <p className="text-md text-gray-500 dark:text-gray-300">
+        <p className="text-sm text-muted-foreground">
           {item.school}
         </p>
       </div>
@@ -38,9 +42,9 @@ export type EducationProps = {
 
 export function Education({ items }: EducationProps) {
   return (
-    <Card title="Education">
+    <Card title={copy.sections.education}>
       {items.map((item) => (
-        <EducationItem key={item.key} item={item} />
+        <EducationEntry key={item.key} item={item} />
       ))}
     </Card>
   );

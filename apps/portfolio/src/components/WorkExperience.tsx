@@ -1,8 +1,8 @@
 "use client";
 
+import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
 import { Card } from "@uptonm/ui/components/base/card";
-import { v4 } from "uuid";
 
 export type WorkExperienceItem = {
   key: string;
@@ -14,33 +14,34 @@ export type WorkExperienceItem = {
   keyPoints: string[];
 };
 
-function WorkExperienceItem({ item }: { item: WorkExperienceItem }) {
+function WorkExperienceEntry({ item }: { item: WorkExperienceItem }) {
   return (
-    <div key={item.key}>
-      <div className="flex flex-col justify-start items-start mb-4">
-        <h4 className="text-md font-bold text-gray-500 mr-2 sm:whitespace-nowrap dark:text-gray-300">
+    <article className="relative pl-6 border-l-2 border-primary/20 dark:border-primary/30">
+      <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-primary/60 dark:bg-primary/80 ring-4 ring-white/60 dark:ring-white/[0.06]" />
+      <div className="flex flex-col justify-start items-start mb-3">
+        <h3 className="text-base font-semibold text-foreground">
           {item.role}
-        </h4>
-        <div className="w-full flex flex-col sm:flex-row justify-between sm:items-center">
-          <span className="text-md font-hairline text-gray-500 dark:text-gray-300">
+        </h3>
+        <div className="w-full flex flex-col sm:flex-row justify-between sm:items-center gap-1">
+          <span className="text-sm text-muted-foreground">
             {item.location}
           </span>
-          <span className="text-md font-hairline text-gray-500 dark:text-gray-300">
+          <span className="text-sm text-muted-foreground tabular-nums">
             {renderDateRange(item.startDate, item.endDate)}
           </span>
         </div>
       </div>
-      <p className="text-gray-500 dark:text-gray-200 mb-2">
+      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
         {item.description}
       </p>
-      <ul className="list-disc list-outside ml-8">
-        {item.keyPoints.map((desc) => (
-          <li key={v4()} className="text-gray-500 leading-6 dark:text-gray-300">
+      <ul className="list-disc list-outside ml-5 space-y-1">
+        {item.keyPoints.map((desc, index) => (
+          <li key={index} className="text-sm text-muted-foreground leading-relaxed">
             {desc}
           </li>
         ))}
       </ul>
-    </div>
+    </article>
   );
 }
 
@@ -50,9 +51,9 @@ export type WorkExperienceProps = {
 
 export function WorkExperience({ items }: WorkExperienceProps) {
   return (
-    <Card title="Work Experience">
+    <Card title={copy.sections.workExperience}>
       {items.map((item) => (
-        <WorkExperienceItem key={item.key} item={item} />
+        <WorkExperienceEntry key={item.key} item={item} />
       ))}
     </Card>
   );

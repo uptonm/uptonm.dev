@@ -10,12 +10,15 @@ export type SocialLink = {
   icon: ReactNode;
 };
 
-function SocialLink({ link }: { link: SocialLink }) {
+function SocialLinkItem({ link }: { link: SocialLink }) {
   return (
     <a
       title={link.title}
       href={link.href}
-      className="rounded-full bg-gray-800 h-10 w-10 flex justify-center items-center dark:bg-white"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${link.title} profile`}
+      className="rounded-full h-11 w-11 flex justify-center items-center bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/40 dark:border-white/15 hover:bg-white/40 dark:hover:bg-white/20 hover:scale-105 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {link.icon}
     </a>
@@ -36,30 +39,42 @@ export function Header({
   socialLinks,
 }: HeaderProps) {
   return (
-    <div className="shadow-md">
-      <div className="w-full py-8 bg-white dark:bg-gray-800 relative">
-        <div className="max-w-6xl px-8 mx-auto flex flex-col items-center sm:flex-row sm:space-x-12">
-          <div className="h-32 w-32 sm:h-48 sm:w-48 rounded-full overflow-hidden">
-            <Image className="" alt="Picture of Mike Upton" src={avatarImage} />
+    <header className="relative py-12 sm:py-16 lg:py-20">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="rounded-3xl bg-white/50 dark:bg-white/[0.06] backdrop-blur-xl border border-white/70 dark:border-white/[0.08] shadow-2xl shadow-black/5 dark:shadow-black/30 p-8 sm:p-12 transition-colors duration-300">
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
+            <ThemeToggle />
           </div>
-          <div className="flex flex-col justify-center items-center pt-6 sm:py-0 sm:items-start space-y-1">
-            <h2 className="text-2xl sm:text-4xl font-bold text-gray-700 dark:text-white">
+
+          <div className="flex flex-col items-center text-center">
+            <div className="relative mb-6">
+              <div className="h-32 w-32 sm:h-40 sm:w-40 rounded-full overflow-hidden ring-4 ring-violet-500/30 dark:ring-violet-400/20 shadow-lg shadow-violet-500/20 dark:shadow-violet-500/10">
+                <Image
+                  className="object-cover"
+                  alt={`Photo of ${fullName}`}
+                  src={avatarImage}
+                  width={160}
+                  height={160}
+                  priority
+                />
+              </div>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-semibold text-foreground tracking-tight">
               {fullName}
-            </h2>
-            <p className="text-lg sm:text-2xl text-gray-500 dark:text-gray-400">
+            </h1>
+            <p className="mt-2 text-lg sm:text-xl text-muted-foreground font-light">
               {currentRole}
             </p>
-            <div className="flex space-x-4 pt-1">
+
+            <nav aria-label="Social links" className="flex space-x-4 mt-6">
               {socialLinks.map((link) => (
-                <SocialLink key={link.title} link={link} />
+                <SocialLinkItem key={link.title} link={link} />
               ))}
-            </div>
+            </nav>
           </div>
         </div>
       </div>
-      <div className="z-20 absolute top-8 right-8">
-        <ThemeToggle />
-      </div>
-    </div>
+    </header>
   );
 }
