@@ -63,7 +63,10 @@ export interface SiteCopy {
     endDate?: string;
   }[];
 
-  skills: string[];
+  skills: {
+    category: string;
+    items: string[];
+  }[];
 }
 
 // -----------------------------------------------------------------------
@@ -183,16 +186,21 @@ export const copy: SiteCopy = {
   ],
 
   skills: [
-    "React",
-    "TypeScript",
-    "Rust",
-    "Golang",
-    "PostgreSQL",
-    "PostGIS",
-    "GraphQL",
-    "Docker",
-    "Kubernetes",
-    "Redis",
-    "Maplibre-GL",
+    {
+      category: "Languages",
+      items: ["TypeScript", "Rust", "Golang"],
+    },
+    {
+      category: "Frontend",
+      items: ["React", "Maplibre-GL"],
+    },
+    {
+      category: "Data & APIs",
+      items: ["PostgreSQL", "PostGIS", "GraphQL", "Redis"],
+    },
+    {
+      category: "Infrastructure",
+      items: ["Docker", "Kubernetes"],
+    },
   ],
 };
