@@ -188,19 +188,23 @@ export const copy: SiteCopy = {
   skills: [
     {
       category: "Languages",
-      items: ["TypeScript", "Rust", "Golang"],
+      items: ["TypeScript", "Rust", "Golang", "PHP", "Hack", "Python"],
     },
     {
       category: "Frontend",
       items: ["React", "Next.js", "Tailwind CSS", "Maplibre-GL"],
     },
     {
+      category: "Backend",
+      items: ["Node.js", "Apache Thrift", "gRPC"],
+    },
+    {
       category: "Data & APIs",
-      items: ["PostgreSQL", "PostGIS", "GraphQL", "tRPC", "Redis"],
+      items: ["PostgreSQL", "PostGIS", "MySQL", "GraphQL", "tRPC", "Redis", "Elasticsearch"],
     },
     {
       category: "Infrastructure",
-      items: ["Docker", "Kubernetes", "Terraform", "Node.js"],
+      items: ["Docker", "Kubernetes", "Terraform", "OpenTelemetry"],
     },
   ],
 };
