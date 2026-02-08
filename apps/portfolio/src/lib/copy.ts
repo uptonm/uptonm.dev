@@ -196,11 +196,11 @@ export const copy: SiteCopy = {
     },
     {
       category: "Backend",
-      items: ["Node.js", "Apache Thrift", "gRPC"],
+      items: ["Node.js"],
     },
     {
       category: "Data & APIs",
-      items: ["PostgreSQL", "PostGIS", "MySQL", "GraphQL", "tRPC", "Redis", "Elasticsearch"],
+      items: ["PostgreSQL", "PostGIS", "MySQL", "GraphQL", "tRPC", "Apache Thrift", "gRPC", "Redis", "Elasticsearch"],
     },
     {
       category: "Infrastructure",
