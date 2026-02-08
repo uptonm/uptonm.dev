@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { copy } from "@/lib/copy";
 import { ThemeProvider } from "@uptonm/ui/components/utils/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -20,19 +21,10 @@ const noto_sans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Mike Upton",
+  title: copy.seo.title,
   applicationName: "uptonm.dev",
-  description: "Mike Upton's personal portfolio",
-  keywords: [
-    "Mike",
-    "Upton",
-    "personal",
-    "website",
-    "blog",
-    "github",
-    "uptonm",
-    "dev",
-  ],
+  description: copy.seo.description,
+  keywords: copy.seo.keywords,
   icons: {
     icon: "/favicon.ico",
   },

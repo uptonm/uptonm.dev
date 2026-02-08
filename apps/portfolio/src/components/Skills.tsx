@@ -1,5 +1,6 @@
 "use client";
 
+import { copy } from "@/lib/copy";
 import { StringToHslColor } from "@/lib/utils";
 import { Card } from "@uptonm/ui/components/base/card";
 import { useTheme } from "@uptonm/ui/components/utils/theme-provider";
@@ -35,7 +36,7 @@ export type SkillsProps = {
 
 export function Skills({ items }: SkillsProps) {
   return (
-    <Card title="Skills">
+    <Card title={copy.sections.skills}>
       <ul className="flex flex-wrap gap-2" role="list">
         {items.map((skill) => (
           <SkillPill key={skill} skill={skill} />

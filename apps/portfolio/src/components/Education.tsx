@@ -1,5 +1,6 @@
 "use client";
 
+import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
 import { Card } from "@uptonm/ui/components/base/card";
 import { GraduationCap } from "lucide-react";
@@ -41,7 +42,7 @@ export type EducationProps = {
 
 export function Education({ items }: EducationProps) {
   return (
-    <Card title="Education">
+    <Card title={copy.sections.education}>
       {items.map((item) => (
         <EducationEntry key={item.key} item={item} />
       ))}

@@ -1,5 +1,6 @@
 "use client";
 
+import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
 import { Card } from "@uptonm/ui/components/base/card";
 
@@ -50,7 +51,7 @@ export type WorkExperienceProps = {
 
 export function WorkExperience({ items }: WorkExperienceProps) {
   return (
-    <Card title="Work Experience">
+    <Card title={copy.sections.workExperience}>
       {items.map((item) => (
         <WorkExperienceEntry key={item.key} item={item} />
       ))}
