@@ -188,15 +188,11 @@ export const copy: SiteCopy = {
   skills: [
     {
       category: "Languages",
-      items: ["TypeScript", "Rust", "Golang", "PHP", "Hack", "Python"],
+      items: ["TypeScript", "Rust", "Golang", "PHP", "Hack", "Python", "Node.js"],
     },
     {
       category: "Frontend",
       items: ["React", "Next.js", "Tailwind CSS", "Maplibre-GL"],
-    },
-    {
-      category: "Backend",
-      items: ["Node.js"],
     },
     {
       category: "Data & APIs",
