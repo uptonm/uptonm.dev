@@ -192,15 +192,15 @@ export const copy: SiteCopy = {
     },
     {
       category: "Frontend",
-      items: ["React", "Maplibre-GL"],
+      items: ["React", "Next.js", "Tailwind CSS", "Maplibre-GL"],
     },
     {
       category: "Data & APIs",
-      items: ["PostgreSQL", "PostGIS", "GraphQL", "Redis"],
+      items: ["PostgreSQL", "PostGIS", "GraphQL", "tRPC", "Redis"],
     },
     {
       category: "Infrastructure",
-      items: ["Docker", "Kubernetes"],
+      items: ["Docker", "Kubernetes", "Terraform", "Node.js"],
     },
   ],
 };
