@@ -1,109 +1,59 @@
 @import "tailwindcss";
 @import "@uptonm/ui/styles/default.css";
 
-/**
- * Tailwind CSS official document:
+/*
+ * Scan the shared UI package for class names.
  * https://tailwindcss.com/docs/detecting-classes-in-source-files
- *
- * if you ever need to explicitly add a source that's excluded by default,
- * you can always add it with the @source directive.
  */
-@source "../../node_modules/@uptonm/ui/**/*.{tsx, ts}";
+@source "../../node_modules/@uptonm/ui/**/*.{ts,tsx}";
 
 @theme inline {
-  --font-heading: var(--font-poppins), sans-serif;
-  --font-body: var(--font-noto-sans), sans-serif;
-  --font-mono: var(--font-noto-sans), monospace;
-  --animate-float-1: float-1 20s ease-in-out infinite;
-  --animate-float-2: float-2 25s ease-in-out infinite;
-  --animate-float-3: float-3 30s ease-in-out infinite;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-:root {
+@layer base {
   html {
-    font-family: var(--font-body);
     scroll-behavior: smooth;
   }
-
+  body {
+    font-family: var(--font-sans);
+    background-image: radial-gradient(
+      1200px 600px at 85% -5%,
+      var(--glow),
+      transparent 60%
+    );
+  }
   h1,
   h2,
   h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-heading);
+  h4 {
+    font-family: var(--font-display);
   }
-
-  p,
-  span,
-  a,
-  li {
-    font-family: var(--font-body);
+  ::selection {
+    background: var(--brand-soft);
+    color: var(--foreground);
   }
 }
 
-/* Floating orb animations for gradient background */
-@keyframes float-1 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(30px, -50px) scale(1.05);
-  }
-  50% {
-    transform: translate(-20px, 20px) scale(0.97);
-  }
-  75% {
-    transform: translate(15px, -30px) scale(1.02);
-  }
+/* Film grain — only visible in dark via --grain-opacity */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  transition: opacity 0.4s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-@keyframes float-2 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(-40px, 30px) scale(1.08);
-  }
-  50% {
-    transform: translate(30px, -40px) scale(0.94);
-  }
-  75% {
-    transform: translate(-25px, 15px) scale(1.03);
-  }
+.portrait {
+  filter: var(--portrait-filter);
 }
 
-@keyframes float-3 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(20px, 40px) scale(0.96);
-  }
-  50% {
-    transform: translate(-30px, -30px) scale(1.06);
-  }
-  75% {
-    transform: translate(35px, -15px) scale(0.98);
-  }
-}
-
-/* Skill pill entrance animation */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Respect reduced motion preferences */
+/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -111,31 +61,6 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* Custom scrollbar for glass aesthetic */
-@layer base {
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: oklch(0.5 0.05 280 / 30%);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.5 0.05 280 / 50%);
-  }
-
-  /* Selection color */
-  ::selection {
-    background: oklch(0.55 0.25 280 / 30%);
-    color: inherit;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,51 +1,36 @@
-"use client";
-
 import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
-import { Card } from "@uptonm/ui/components/base/card";
-import { GraduationCap } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 
-export type EducationItem = {
-  key: string;
-  school: string;
-  degree: string;
-  startDate: Date;
-  endDate?: Date;
-};
-
-function EducationEntry({ item }: { item: EducationItem }) {
+export function Education() {
   return (
-    <div className="flex items-start w-full gap-3">
-      <div className="mt-0.5 rounded-lg bg-primary/10 dark:bg-primary/20 p-2 flex-shrink-0">
-        <GraduationCap className="h-5 w-5 text-primary" aria-hidden="true" />
+    <Reveal delay={80}>
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+        {copy.sections.education}
+      </p>
+      <h2 className="mt-3 font-display text-3xl font-light md:text-4xl">
+        Where I studied
+      </h2>
+      <div className="mt-8 space-y-4">
+        {copy.education.map((item) => (
+          <div
+            key={item.key}
+            className="rounded-2xl border border-border bg-card p-6"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="font-display text-lg text-foreground">
+                  {item.degree}
+                </h3>
+                <p className="mt-1 text-muted-foreground">{item.school}</p>
+              </div>
+              <span className="whitespace-nowrap text-sm text-muted-foreground">
+                {renderDateRange(item.startDate, item.endDate)}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="flex flex-col items-stretch w-full min-w-0">
-        <div className="flex flex-col sm:flex-row lg:flex-col 2xl:flex-row justify-between w-full gap-1">
-          <h3 className="text-base font-semibold text-foreground">
-            {item.degree}
-          </h3>
-          <p className="text-sm text-muted-foreground tabular-nums whitespace-nowrap">
-            {renderDateRange(item.startDate, item.endDate)}
-          </p>
-        </div>
-        <p className="text-sm text-muted-foreground">
-          {item.school}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-export type EducationProps = {
-  items: EducationItem[];
-};
-
-export function Education({ items }: EducationProps) {
-  return (
-    <Card title={copy.sections.education}>
-      {items.map((item) => (
-        <EducationEntry key={item.key} item={item} />
-      ))}
-    </Card>
+    </Reveal>
   );
 }
