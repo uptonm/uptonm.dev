@@ -1,6 +1,8 @@
 import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
-import { Reveal } from "@/components/Reveal";
+import { Card } from "@uptonm/ui/components/base/card";
+import { Reveal } from "@uptonm/ui/components/utils/reveal";
+import { SectionHeading } from "@uptonm/ui/components/base/section-heading";
 
 export function Education() {
   return (
@@ -8,20 +10,13 @@ export function Education() {
       delay={80}
       className="mt-12 grid gap-10 border-t border-border pt-10 md:grid-cols-[0.65fr_1.35fr] md:gap-12"
     >
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-          {copy.sections.education}
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-light md:text-4xl">
-          Where I built the foundation
-        </h2>
-      </div>
+      <SectionHeading
+        eyebrow={copy.sections.education}
+        title="Where I built the foundation"
+      />
       <div className="space-y-4">
         {copy.education.map((item) => (
-          <div
-            key={item.key}
-            className="rounded-2xl border border-border bg-card p-6"
-          >
+          <Card key={item.key}>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div>
                 <h3 className="font-display text-lg text-foreground">
@@ -41,7 +36,7 @@ export function Education() {
                 {item.coursework.join(" · ")}
               </p>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </Reveal>

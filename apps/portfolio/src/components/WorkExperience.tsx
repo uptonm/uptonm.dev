@@ -1,6 +1,8 @@
 import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
-import { Reveal } from "@/components/Reveal";
+import { Badge } from "@uptonm/ui/components/base/badge";
+import { Reveal } from "@uptonm/ui/components/utils/reveal";
+import { SectionHeading } from "@uptonm/ui/components/base/section-heading";
 import { cn } from "@uptonm/ui/lib/utils";
 
 export function WorkExperience() {
@@ -8,12 +10,10 @@ export function WorkExperience() {
     <section id="work" className="border-t border-border bg-secondary/40">
       <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
         <Reveal className="mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-            {copy.sections.workExperience}
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-light md:text-4xl">
-            Where I&apos;ve worked
-          </h2>
+          <SectionHeading
+            eyebrow={copy.sections.workExperience}
+            title="Where I've worked"
+          />
         </Reveal>
 
         <div className="space-y-4">
@@ -54,9 +54,13 @@ export function WorkExperience() {
                     {item.role}
                   </h3>
                   {item.employmentType ? (
-                    <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <Badge
+                      variant="outline"
+                      size="sm"
+                      className="font-medium uppercase tracking-wide text-muted-foreground"
+                    >
                       {item.employmentType}
-                    </span>
+                    </Badge>
                   ) : null}
                 </div>
                 <p className="mt-2 text-muted-foreground">{item.description}</p>

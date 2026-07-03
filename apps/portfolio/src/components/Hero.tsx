@@ -1,5 +1,7 @@
 import { copy } from "@/lib/copy";
-import { socialIcon } from "@/components/icons";
+import { Badge } from "@uptonm/ui/components/base/badge";
+import { Button } from "@uptonm/ui/components/base/button";
+import { SocialLinks } from "@uptonm/ui/components/base/social-links";
 import avatarImg from "@/public/avatar.jpeg";
 import Image from "next/image";
 
@@ -8,13 +10,16 @@ export function Hero() {
     <section id="top" className="mx-auto max-w-5xl px-6 pt-32 pb-16 md:pt-40">
       <div className="grid items-center gap-12 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
+          <Badge
+            size="md"
+            className="mb-6 gap-2 font-medium text-muted-foreground"
+          >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
             </span>
             {copy.home.availability} · {copy.home.location}
-          </div>
+          </Badge>
 
           <h1 className="font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             {copy.home.tagline}
@@ -25,24 +30,10 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href="#projects"
-              className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-on-brand transition-colors hover:bg-brand-hover"
-            >
-              View my work
-            </a>
-            {copy.socials.map((s) => (
-              <a
-                key={s.key}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.title}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-brand hover:text-brand"
-              >
-                {socialIcon(s.key, "h-5 w-5")}
-              </a>
-            ))}
+            <Button asChild variant="brand" size="pill">
+              <a href="#projects">View my work</a>
+            </Button>
+            <SocialLinks links={copy.socials} size="md" />
           </div>
         </div>
 
