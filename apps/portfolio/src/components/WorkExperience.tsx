@@ -1,60 +1,56 @@
-"use client";
-
 import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
-import { Card } from "@uptonm/ui/components/base/card";
+import { Reveal } from "@/components/Reveal";
 
-export type WorkExperienceItem = {
-  key: string;
-  role: string;
-  location: string;
-  startDate: Date;
-  endDate?: Date;
-  description: string;
-  keyPoints: string[];
-};
-
-function WorkExperienceEntry({ item }: { item: WorkExperienceItem }) {
+export function WorkExperience() {
   return (
-    <article className="relative pl-6 border-l-2 border-primary/20 dark:border-primary/30">
-      <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-primary/60 dark:bg-primary/80 ring-4 ring-white/60 dark:ring-white/[0.06]" />
-      <div className="flex flex-col justify-start items-start mb-3">
-        <h3 className="text-base font-semibold text-foreground">
-          {item.role}
-        </h3>
-        <div className="w-full flex flex-col sm:flex-row justify-between sm:items-center gap-1">
-          <span className="text-sm text-muted-foreground">
-            {item.location}
-          </span>
-          <span className="text-sm text-muted-foreground tabular-nums">
-            {renderDateRange(item.startDate, item.endDate)}
-          </span>
+    <section id="work" className="border-t border-border bg-secondary/40">
+      <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+        <Reveal className="mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+            {copy.sections.workExperience}
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-light md:text-4xl">
+            Where I&apos;ve worked
+          </h2>
+        </Reveal>
+
+        <div className="space-y-4">
+          {copy.workExperience.map((item, i) => (
+            <Reveal
+              key={item.key}
+              delay={(i % 3) * 60}
+              className="group grid gap-4 rounded-2xl border border-transparent p-6 transition-colors hover:border-border hover:bg-card md:grid-cols-[220px_1fr]"
+            >
+              <div className="text-sm text-muted-foreground">
+                <div className="font-medium text-foreground">
+                  {renderDateRange(item.startDate, item.endDate)}
+                </div>
+                <div>{item.location}</div>
+              </div>
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="font-display text-xl text-foreground">{item.role}</h3>
+                  {item.employmentType ? (
+                    <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      {item.employmentType}
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-2 text-muted-foreground">{item.description}</p>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  {item.keyPoints.map((point) => (
+                    <li key={point} className="flex gap-3">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-        {item.description}
-      </p>
-      <ul className="list-disc list-outside ml-5 space-y-1">
-        {item.keyPoints.map((desc, index) => (
-          <li key={index} className="text-sm text-muted-foreground leading-relaxed">
-            {desc}
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
-}
-
-export type WorkExperienceProps = {
-  items: WorkExperienceItem[];
-};
-
-export function WorkExperience({ items }: WorkExperienceProps) {
-  return (
-    <Card title={copy.sections.workExperience}>
-      {items.map((item) => (
-        <WorkExperienceEntry key={item.key} item={item} />
-      ))}
-    </Card>
+    </section>
   );
 }

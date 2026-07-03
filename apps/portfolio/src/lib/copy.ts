@@ -35,7 +35,12 @@ export interface SiteCopy {
   }[];
 
   home: {
-    bio: string;
+    /** Short headline shown in the hero. */
+    tagline: string;
+    /** Availability / status line shown in the hero badge. */
+    availability: string;
+    location: string;
+    bio: string[];
   };
 
   sections: {
@@ -49,6 +54,7 @@ export interface SiteCopy {
     key: string;
     role: string;
     location: string;
+    employmentType?: string;
     startDate: string;
     endDate?: string;
     description: string;
@@ -67,6 +73,11 @@ export interface SiteCopy {
     category: string;
     items: string[];
   }[];
+
+  contact: {
+    heading: string;
+    blurb: string;
+  };
 }
 
 // -----------------------------------------------------------------------
@@ -83,17 +94,21 @@ export const copy: SiteCopy = {
   seo: {
     title: "Mike Upton — Software Engineer",
     description:
-      "Software Engineer at Meta building telecom infrastructure at global scale. React, TypeScript, Rust, Go, PostgreSQL.",
+      "Full-stack software engineer at Meta building large-scale systems to plan, operate, and manage one of the world's biggest telecom networks. React, TypeScript, Rust, Go, C++, PostgreSQL.",
     keywords: [
       "Mike Upton",
       "software engineer",
-      "Meta",
       "full stack",
+      "Meta",
       "React",
       "TypeScript",
       "Rust",
-      "Golang",
-      "portfolio",
+      "Go",
+      "C++",
+      "PostgreSQL",
+      "geospatial",
+      "distributed systems",
+      "Boston",
     ],
   },
 
@@ -111,7 +126,14 @@ export const copy: SiteCopy = {
   ],
 
   home: {
-    bio: `Software Engineer at Meta building the platform that manages Meta's global telecommunications network. I specialise in full-stack product development with React, TypeScript, and Rust, and care deeply about developer experience, system design, and shipping high-quality software. Outside of work I snowboard, travel, attend concerts, and dabble in music production.`,
+    tagline: "I turn massive, real-world systems into software people love to use.",
+    availability: "Open to interesting problems",
+    location: "Boston, MA",
+    bio: [
+      `I'm a full-stack software engineer. I take big, messy, real-world systems and turn them into software people actually enjoy using.`,
+      `Most days that's React and TypeScript up front, with Rust, Go, and PostgreSQL underneath. I care about system design, developer experience, and shipping work that lasts.`,
+      `Outside of work, you'll find me snowboarding, on the golf course, traveling, at concerts, or making music.`,
+    ],
   },
 
   sections: {
@@ -125,52 +147,69 @@ export const copy: SiteCopy = {
     {
       key: "meta-direct",
       role: "Software Engineer",
-      location: "Meta - Cambridge, MA",
+      location: "Meta · Cambridge, MA",
+      employmentType: "Full-time",
       startDate: "01/01/2025",
-      description: `Lead full-stack development on Meta's internal OSS/BSS/NMS platform — the system of record for the company's global telecom network. Own technical direction for a 10-engineer team, interface directly with infrastructure stakeholders, and ship product that enables Meta to scale network deployments at industry-leading rates.`,
+      description: `Joined Meta full-time on the same team I'd contracted with since 2020. I build the software Meta uses to plan, build, operate, and keep inventory of one of the world's largest telecom networks. My work spans the full stack, from database and services to the map-based interfaces teams rely on every day.`,
       keyPoints: [
-        "Own the product roadmap for the network lifecycle management module, aligning engineering priorities with infrastructure stakeholders across the organisation.",
-        "Lead a team of 10 engineers — run design reviews, set technical standards, and drive the adoption of Rust for performance-critical service workloads.",
-        "Architect and deliver full-stack features (React, TypeScript, GraphQL, PostgreSQL, Rust) that reduced network provisioning lead time across Meta's global fibre footprint.",
+        "Design and ship full-stack features across React, TypeScript, GraphQL, PostgreSQL, and Rust for the platform that runs day-to-day network operations.",
+        "Turn complex, large-scale infrastructure workflows — project management, operations, and inventory — into interfaces engineers and operators actually want to use.",
+        "Partner with infrastructure teams to scope requirements and set technical direction for new areas of the platform.",
       ],
     },
     {
-      key: "meta-method-dev",
-      role: "Software Engineer II",
-      location: "Method Dev for Meta - Cambridge, MA",
-      startDate: "08/01/2022",
-      endDate: "12/31/2024",
-      description: `Built and shipped core modules of Meta's OSS/BSS/NMS telecom platform from early-stage to production, serving teams responsible for Meta's global fibre infrastructure.`,
+      key: "method-dev-se3",
+      role: "Senior Software Engineer III",
+      location: "Method Dev (for Meta) · Cambridge, MA",
+      employmentType: "Contract",
+      startDate: "04/01/2023",
+      endDate: "01/01/2025",
+      description: `Grew into a senior engineer on the same team as the platform scaled, taking ownership of performance-critical services and the cross-cutting technical decisions behind them.`,
       keyPoints: [
-        "Designed and built a project management product from scratch, adopted by infrastructure teams to track construction and maintenance of Meta's global telecom network.",
-        "Implemented geospatial pathfinding for fibre route planning using PostGIS, PGRouting, and a custom Maplibre-GL map framework — enabling automated least-cost routing across continental-scale networks.",
-        "Drove the team's migration from Golang to Rust for backend services, authoring RFC standards, leading code reviews, and establishing patterns adopted across the platform.",
-        "Shipped full-stack map-based features (Maplibre-GL, React, TypeScript, Redux, GraphQL, Rust) used daily by network planning and operations teams.",
+        "Led the team's migration from Go to Rust for backend services — wrote the standards, ran the code reviews, and set patterns other engineers built on.",
+        "Owned performance and reliability for core services handling continental-scale network data.",
+        "Shaped technical direction for new areas of the platform and mentored engineers through design reviews.",
+      ],
+    },
+    {
+      key: "method-dev-se2",
+      role: "Software Engineer II",
+      location: "Method Dev (for Meta) · Cambridge, MA",
+      employmentType: "Contract",
+      startDate: "08/01/2022",
+      endDate: "04/01/2023",
+      description: `Built core parts of the platform from the ground up — the tools teams use to manage projects, operations, and inventory across a massive telecom network.`,
+      keyPoints: [
+        "Designed and built a project-management product from scratch, adopted by infrastructure teams to track construction and maintenance across the network.",
+        "Built geospatial route-planning (least-cost pathfinding) for fiber using PostGIS, PGRouting, and a custom MapLibre-GL mapping framework.",
+        "Shipped full-stack, map-based features across React, TypeScript, Redux, GraphQL, and Rust used daily by planning and operations teams.",
       ],
     },
     {
       key: "facebook-infogain",
       role: "Software Engineer",
-      location: "Infogain for Facebook - Cambridge, MA",
-      startDate: "08/01/2020",
+      location: "Infogain (for Facebook) · Cambridge, MA",
+      employmentType: "Contract",
+      startDate: "03/01/2020",
       endDate: "07/31/2022",
-      description: `Founding engineer on the platform that became Meta's internal telecom management system. Built the application from scratch during the COVID-19 pandemic, establishing the frontend architecture, mapping framework, and plugin system still in use today.`,
+      description: `Founding engineer on the platform that became this telecom management system. Built the application from scratch during the pandemic — the frontend architecture, mapping framework, and plugin system still in use today.`,
       keyPoints: [
-        "Architected and built an in-house geospatial mapping framework on Maplibre-GL for visualising and editing vector tile datasets representing thousands of miles of fibre infrastructure.",
-        "Designed a plugin-based project management system for tracking dark and lit fibre networks from construction through maintenance — adopted across US and European deployments.",
-        "Built Golang API endpoints backed by PostgreSQL and Redis caching, achieving < 200ms p99 latency for complex statistical aggregations over long-haul telecom datasets.",
+        "Architected an in-house geospatial mapping framework on MapLibre-GL for visualizing and editing vector-tile datasets covering thousands of miles of fiber.",
+        "Designed a plugin-based project-management system for tracking networks from construction through maintenance, adopted across US and European deployments.",
+        "Built Go APIs over PostgreSQL with Redis caching, holding sub-200ms p99 latency on complex aggregations over large telecom datasets.",
       ],
     },
     {
       key: "fidelity-labs",
       role: "Software Engineering Co-Op",
-      location: "Fidelity Labs - Boston, MA",
+      location: "Fidelity Labs · Boston, MA",
+      employmentType: "Co-op",
       startDate: "05/01/2018",
       endDate: "12/31/2020",
       description: `Three rotations across Fidelity's internal innovation lab, shipping full-stack applications for analytics, ESG investing, and developer tooling.`,
       keyPoints: [
-        "Built a full-stack analytics and admin dashboard (React, TypeScript, Nest.js) integrated with AWS, Concourse CI, and Jenkins — used by engineering teams for deployment monitoring.",
-        "Developed an automated JIRA triage system with custom email notifications, reducing manual issue routing for the team's project board.",
+        "Built a full-stack analytics and admin dashboard (React, TypeScript, Nest.js) integrated with AWS, Concourse CI, and Jenkins.",
+        "Developed an automated JIRA triage system with custom email notifications, cutting manual issue routing for the team.",
       ],
     },
   ],
@@ -188,11 +227,11 @@ export const copy: SiteCopy = {
   skills: [
     {
       category: "Languages",
-      items: ["TypeScript", "Rust", "Golang", "PHP", "Hack", "Python", "Node.js"],
+      items: ["TypeScript", "Rust", "Go", "C++", "PHP", "Hack", "Python", "Node.js"],
     },
     {
       category: "Frontend",
-      items: ["React", "Next.js", "Tailwind CSS", "Maplibre-GL"],
+      items: ["React", "Next.js", "Tailwind CSS", "MapLibre-GL"],
     },
     {
       category: "Data & APIs",
@@ -203,4 +242,10 @@ export const copy: SiteCopy = {
       items: ["Docker", "Kubernetes", "Terraform", "OpenTelemetry"],
     },
   ],
+
+  contact: {
+    heading: "Let's build something worth using.",
+    blurb:
+      "Have a role, a project, or just want to talk shop about Rust, maps, and large-scale systems? My inbox is always open.",
+  },
 };

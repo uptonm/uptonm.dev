@@ -3,6 +3,7 @@
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -13,58 +14,57 @@ export type Theme = "light" | "dark";
 export type ThemeContextState = {
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
 };
 
-export const initialThemeContextState: ThemeContextState = {
-  theme: "dark",
-  setTheme() {
-    throw new Error("method 'setTheme' not initialized");
-  },
-};
-
-export const ThemeContext = createContext<ThemeContextState>(
-  initialThemeContextState
-);
+const ThemeContext = createContext<ThemeContextState | undefined>(undefined);
 
 type ThemeProviderProps = {
   children: ReactNode;
 };
 
+/**
+ * Syncs React state with the `dark` class on <html>.
+ *
+ * The initial class is set by an inline script in the root layout (before first
+ * paint) to avoid a flash of the wrong theme, so here we read that class on
+ * mount and keep it in sync from then on.
+ */
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(initialThemeContextState.theme);
+  const [theme, setThemeState] = useState<Theme>("light");
 
   useEffect(() => {
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-      setTheme("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-      setTheme("light");
+    const isDark = document.documentElement.classList.contains("dark");
+    setThemeState(isDark ? "dark" : "light");
+  }, []);
+
+  const setTheme = useCallback((next: Theme) => {
+    setThemeState(next);
+    document.documentElement.classList.toggle("dark", next === "dark");
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      /* ignore storage errors (e.g. private mode) */
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.theme = theme || initialThemeContextState.theme;
-    setTheme(theme || initialThemeContextState.theme);
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
+  const toggleTheme = useCallback(() => {
+    setTheme(
+      document.documentElement.classList.contains("dark") ? "light" : "dark",
+    );
+  }, [setTheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 }
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = (): ThemeContextState => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+};

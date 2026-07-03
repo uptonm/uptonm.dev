@@ -1,3 +1,10 @@
 node_modules
 .turbo
 .next
+.DS_Store
+
+# local env files (keep .env.example tracked)
+.env
+.env*.local
+.vercel
+.env*

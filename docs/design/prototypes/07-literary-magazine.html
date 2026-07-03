@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mike Upton — Full-Stack Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ivory: '#f7f3ea',
+          ivory2: '#efe9db',
+          ink: '#1a1712',
+          muted: '#645c50',
+          rule: '#d8cfbc',
+          oxblood: '#7c2d38',
+          oxblood2: '#98404b',
+        },
+        fontFamily: {
+          display: ['Playfair Display', 'Georgia', 'serif'],
+          serif: ['Spectral', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#f7f3ea; }
+  .reveal { opacity:0; transform:translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  .smallcaps { font-variant: small-caps; letter-spacing:.12em; }
+  .dropcap::first-letter { font-family:'Playfair Display',serif; float:left; font-size:4.2rem; line-height:.8; padding:.35rem .6rem .1rem 0; color:#7c2d38; }
+  .rule-t { border-top:1px solid #d8cfbc; }
+  .rule-thick { border-top:3px double #1a1712; }
+  .ul { background-image:linear-gradient(#7c2d38,#7c2d38); background-size:0 1px; background-repeat:no-repeat; background-position:0 100%; transition:background-size .3s; }
+  .ul:hover { background-size:100% 1px; }
+  ::selection { background:#7c2d38; color:#f7f3ea; }
+</style>
+</head>
+<body class="font-serif text-ink antialiased">
+
+  <div class="fixed bottom-4 left-4 z-50 rounded-none border border-rule bg-ivory/90 px-3 py-1.5 font-sans text-[11px] tracking-wide text-oxblood backdrop-blur">07 · Literary Magazine</div>
+
+  <!-- masthead -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-40 bg-ivory/90 backdrop-blur">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="flex items-center justify-between py-3">
+        <a href="#top" class="font-display text-xl font-bold tracking-tight">Mike Upton</a>
+        <nav class="hidden items-center gap-7 font-sans text-xs uppercase tracking-widest text-muted md:flex">
+          <a href="#about" class="ul hover:text-ink">About</a>
+          <a href="#work" class="ul hover:text-ink">Work</a>
+          <a href="#projects" class="ul hover:text-ink">Projects</a>
+          <a href="#contact" class="ul hover:text-ink">Contact</a>
+        </nav>
+        <span class="hidden font-sans text-xs uppercase tracking-widest text-muted sm:block">Est. 2018 · Boston</span>
+      </div>
+      <div class="rule-thick"></div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- hero / cover -->
+    <section class="mx-auto max-w-5xl px-6 pb-14 pt-32 md:pt-40">
+      <p class="reveal text-center font-sans text-xs uppercase tracking-[0.35em] text-oxblood">The Portfolio · Vol. IX · No. 26</p>
+      <h1 class="reveal mt-6 text-center font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-7xl md:text-8xl">
+        Building tools for<br />the <em class="italic">physical world</em>
+      </h1>
+      <p class="reveal mx-auto mt-7 max-w-2xl text-center font-sans text-base leading-relaxed text-muted">
+        A full-stack engineer's field notes on maps, fiber, and the quiet craft of software.
+      </p>
+      <div class="reveal mx-auto mt-8 flex max-w-md items-center justify-center gap-6 font-sans text-xs uppercase tracking-widest text-muted">
+        <span class="h-px flex-1 bg-rule"></span>
+        <a href="#projects" class="text-oxblood ul">Read on ↓</a>
+        <span class="h-px flex-1 bg-rule"></span>
+      </div>
+
+      <!-- lede: two columns -->
+      <div class="reveal mt-14 grid gap-10 md:grid-cols-[1.6fr_1fr]">
+        <div>
+          <p class="dropcap text-lg leading-8">I'm Mike Upton, a Boston-based software engineer currently contracting for Meta, where I build the OSS/BSS/NMS systems that map and route their extensive global telecom footprint. My interests live mostly in the web space — React, TypeScript, and increasingly Rust — and in interfaces that feel considered rather than clever.</p>
+          <p class="mt-4 text-lg leading-8">Away from the keyboard, you'll find me snowboarding, traveling, at concerts and festivals, or making a bit of music of my own.</p>
+        </div>
+        <aside class="rule-t pt-5">
+          <p class="smallcaps font-sans text-xs uppercase text-oxblood">In this issue</p>
+          <ul class="mt-4 space-y-3 text-base">
+            <li class="flex justify-between border-b border-rule pb-3"><a href="#about" class="ul">On the work</a><span class="font-sans text-xs text-muted">01</span></li>
+            <li class="flex justify-between border-b border-rule pb-3"><a href="#work" class="ul">Experience</a><span class="font-sans text-xs text-muted">02</span></li>
+            <li class="flex justify-between border-b border-rule pb-3"><a href="#projects" class="ul">Selected work</a><span class="font-sans text-xs text-muted">03</span></li>
+            <li class="flex justify-between"><a href="#contact" class="ul">Correspondence</a><span class="font-sans text-xs text-muted">04</span></li>
+          </ul>
+          <div class="mt-6 flex gap-4 font-sans text-xs uppercase tracking-widest text-muted">
+            <a href="https://github.com/uptonm" target="_blank" rel="noreferrer" class="ul hover:text-ink">GitHub</a>
+            <a href="https://linkedin.com/in/uptonm" target="_blank" rel="noreferrer" class="ul hover:text-ink">LinkedIn</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- about / feature -->
+    <section id="about" class="mx-auto max-w-5xl px-6 py-16">
+      <div class="rule-thick"></div>
+      <div class="reveal grid gap-10 pt-10 md:grid-cols-[200px_1fr]">
+        <div><p class="smallcaps font-sans text-xs uppercase text-oxblood">01 — Feature</p><h2 class="mt-3 font-display text-3xl font-bold leading-tight">On the work</h2></div>
+        <div class="columns-1 gap-10 text-lg leading-8 sm:columns-2">
+          <p>Over the last several years I've helped build a platform that manages Meta's global telecom footprint — from advanced fiber-optic pathfinding with PostGIS and pgRouting to a map-based project-management system deployed across the United States and Europe.</p>
+          <p class="mt-4">Along the way I've helped lead standards and code reviews, and guided a team's migration from Go to Rust as our primary service language. I care about performance you can feel and interfaces that get out of the way.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- work -->
+    <section id="work" class="mx-auto max-w-5xl px-6 py-16">
+      <div class="rule-thick"></div>
+      <div class="reveal pt-10"><p class="smallcaps font-sans text-xs uppercase text-oxblood">02 — Curriculum Vitæ</p><h2 class="mt-3 font-display text-3xl font-bold">Experience</h2></div>
+      <div class="mt-8 divide-y divide-rule">
+        <article class="reveal grid gap-4 py-7 md:grid-cols-[1fr_200px]">
+          <div>
+            <h3 class="font-display text-2xl font-semibold">Full-Stack Software Engineer II</h3>
+            <p class="mt-1 italic text-muted">Method Dev for Meta — Cambridge, MA</p>
+            <p class="mt-3 leading-7 text-muted">OSS/BSS/NMS for Meta's global telecom footprint across React, TypeScript, GraphQL, Hasura, PostgreSQL, Go & Rust. Led a new project-management product, built PostGIS + pgRouting fiber pathfinding, and drove the Go → Rust migration.</p>
+          </div>
+          <div class="font-sans text-xs uppercase tracking-widest text-muted md:text-right">2022 — Present</div>
+        </article>
+        <article class="reveal grid gap-4 py-7 md:grid-cols-[1fr_200px]">
+          <div>
+            <h3 class="font-display text-2xl font-semibold">Full-Stack Software Engineer</h3>
+            <p class="mt-1 italic text-muted">Infogain for Facebook — Cambridge, MA</p>
+            <p class="mt-3 leading-7 text-muted">Built a fiber-management platform from scratch, including an in-house MapLibre-GL framework for vector-tile datasets and sub-200ms Go/Redis APIs over PostgreSQL.</p>
+          </div>
+          <div class="font-sans text-xs uppercase tracking-widest text-muted md:text-right">2020 — 2022</div>
+        </article>
+        <article class="reveal grid gap-4 py-7 md:grid-cols-[1fr_200px]">
+          <div>
+            <h3 class="font-display text-2xl font-semibold">Co-Op / Software Engineer Intern</h3>
+            <p class="mt-1 italic text-muted">Fidelity Labs — Boston, MA</p>
+            <p class="mt-3 leading-7 text-muted">Led a full-stack analytics dashboard (React, TS, Nest.js) and an internal ESG-investing startup on Spring Boot & Angular, with TDD in Cucumber and Jest.</p>
+          </div>
+          <div class="font-sans text-xs uppercase tracking-widest text-muted md:text-right">2018 — 2020</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- projects -->
+    <section id="projects" class="mx-auto max-w-5xl px-6 py-16">
+      <div class="rule-thick"></div>
+      <div class="reveal pt-10"><p class="smallcaps font-sans text-xs uppercase text-oxblood">03 — Portfolio</p><h2 class="mt-3 font-display text-3xl font-bold">Selected work</h2></div>
+      <div class="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-3">
+        <article class="reveal border-t-2 border-ink pt-5">
+          <p class="font-sans text-xs uppercase tracking-widest text-oxblood">Essay I</p>
+          <h3 class="mt-2 font-display text-2xl font-semibold leading-tight">Fiber Pathfinding Engine</h3>
+          <p class="mt-3 leading-7 text-muted">Advanced routing over fiber-optic networks with PostGIS & pgRouting, rendered live in a custom MapLibre-GL framework.</p>
+          <p class="mt-4 font-sans text-xs uppercase tracking-widest text-muted">Rust · PostGIS · MapLibre</p>
+        </article>
+        <article class="reveal border-t-2 border-ink pt-5">
+          <p class="font-sans text-xs uppercase tracking-widest text-oxblood">Essay II</p>
+          <h3 class="mt-2 font-display text-2xl font-semibold leading-tight">OSS/BSS Platform</h3>
+          <p class="mt-3 leading-7 text-muted">A plugin-based platform managing thousands of miles of dark & lit fiber across the US and Europe.</p>
+          <p class="mt-4 font-sans text-xs uppercase tracking-widest text-muted">React · GraphQL · Go</p>
+        </article>
+        <article class="reveal border-t-2 border-ink pt-5">
+          <p class="font-sans text-xs uppercase tracking-widest text-oxblood">Essay III</p>
+          <h3 class="mt-2 font-display text-2xl font-semibold leading-tight">uptonm.dev</h3>
+          <p class="mt-3 leading-7 text-muted">This very publication — a Turborepo with a shared design-system package on Next.js and Tailwind. Open source.</p>
+          <p class="mt-4 font-sans text-xs uppercase tracking-widest text-muted">Next.js · Tailwind · Turbo</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- skills + education -->
+    <section class="mx-auto max-w-5xl px-6 py-16">
+      <div class="rule-thick"></div>
+      <div class="grid gap-12 pt-10 md:grid-cols-2">
+        <div class="reveal">
+          <p class="smallcaps font-sans text-xs uppercase text-oxblood">Appendix A</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">The toolkit</h3>
+          <p class="mt-4 text-lg leading-8">React, TypeScript, Rust, Go, PostgreSQL, PostGIS, GraphQL, Redux, Docker, and Kubernetes — chosen for the job, not for the résumé.</p>
+        </div>
+        <div class="reveal">
+          <p class="smallcaps font-sans text-xs uppercase text-oxblood">Appendix B</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Education</h3>
+          <div class="mt-4 flex items-baseline justify-between border-t border-rule pt-4">
+            <div><p class="font-display text-xl font-semibold">BS, Computer Science</p><p class="italic text-muted">Wentworth Institute of Technology</p></div>
+            <span class="font-sans text-xs uppercase tracking-widest text-muted">2016 — 2020</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" class="mx-auto max-w-5xl px-6 py-20 text-center">
+      <div class="rule-thick"></div>
+      <div class="reveal pt-12">
+        <p class="smallcaps font-sans text-xs uppercase text-oxblood">04 — Correspondence</p>
+        <h2 class="mx-auto mt-4 max-w-2xl font-display text-4xl font-bold italic leading-tight md:text-6xl">Letters to the editor, always welcome.</h2>
+        <p class="mx-auto mt-5 max-w-lg text-lg leading-8 text-muted">Have a project in mind, or just want to talk shop about Rust and maps? Write to me.</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="mailto:uptonm.dev@gmail.com" class="rounded-none bg-oxblood px-7 py-3.5 font-sans text-sm font-medium text-ivory transition hover:bg-oxblood2">Say hello</a>
+          <a href="https://github.com/uptonm" target="_blank" rel="noreferrer" class="rounded-none border border-ink px-7 py-3.5 font-sans text-sm font-medium text-ink transition hover:bg-ink hover:text-ivory">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rule-thick mx-auto max-w-5xl">
+    <div class="flex flex-col items-center justify-between gap-2 px-6 py-8 font-sans text-xs uppercase tracking-widest text-muted sm:flex-row">
+      <span class="font-display text-sm normal-case tracking-normal text-ink">Mike Upton</span>
+      <span>© <span id="year"></span> · Printed & bound in Boston</span>
+    </div>
+  </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

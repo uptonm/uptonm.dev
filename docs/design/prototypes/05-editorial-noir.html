@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mike Upton — Full-Stack Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          noir: '#141110',
+          panel: '#1c1815',
+          panel2: '#211c18',
+          line: '#332c26',
+          ivory: '#ece5da',
+          muted: '#9a8f80',
+          brass: '#cba24a',
+          brass2: '#e0c079',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background:#141110;
+    background-image:
+      radial-gradient(900px 500px at 85% -10%, rgba(203,162,74,.10), transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+  .font-display { font-optical-sizing:auto; }
+  .reveal { opacity:0; transform:translateY(18px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform:none; }
+  .hair { background:linear-gradient(90deg,transparent,#cba24a,transparent); height:1px; }
+  .ul { background-image:linear-gradient(#cba24a,#cba24a); background-size:0 1px; background-repeat:no-repeat; background-position:0 100%; transition:background-size .3s; }
+  .ul:hover { background-size:100% 1px; }
+  ::selection { background:#cba24a; color:#141110; }
+</style>
+</head>
+<body class="font-sans text-ivory antialiased">
+
+  <div class="fixed bottom-4 left-4 z-50 rounded-full border border-line bg-panel/90 px-3 py-1.5 text-[11px] font-medium tracking-wide text-brass backdrop-blur">05 · Editorial Noir</div>
+
+  <header id="nav" class="fixed inset-x-0 top-0 z-40 border-b border-transparent transition-all">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+      <a href="#top" class="font-display text-lg tracking-tight">Mike Upton</a>
+      <nav class="hidden items-center gap-8 text-sm text-muted md:flex">
+        <a href="#about" class="ul hover:text-ivory">About</a>
+        <a href="#work" class="ul hover:text-ivory">Work</a>
+        <a href="#projects" class="ul hover:text-ivory">Projects</a>
+        <a href="#contact" class="ul hover:text-ivory">Contact</a>
+      </nav>
+      <a href="#contact" class="rounded-full border border-brass/50 px-4 py-2 text-sm font-medium text-brass transition hover:bg-brass hover:text-noir">Let's talk</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- hero -->
+    <section class="mx-auto max-w-6xl px-6 pb-16 pt-36 md:pt-48">
+      <div class="grid items-center gap-14 md:grid-cols-[1.5fr_1fr]">
+        <div>
+          <div class="reveal mb-7 inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.25em] text-brass">
+            <span class="inline-block h-px w-8 bg-brass"></span> Available for select work
+          </div>
+          <h1 class="reveal font-display text-5xl font-light leading-[1.03] tracking-tight sm:text-6xl md:text-7xl">
+            Full-stack engineer<br />building tools for the<br /><em class="italic text-brass2">physical world</em>.
+          </h1>
+          <p class="reveal mt-8 max-w-xl text-lg leading-relaxed text-muted">
+            I'm Mike — a Boston-based software engineer currently contracting for <span class="text-ivory">Meta</span>, building the systems that map and route their global telecom footprint. I favor React, TypeScript, and Rust, and interfaces that feel quietly precise.
+          </p>
+          <div class="reveal mt-9 flex flex-wrap items-center gap-3">
+            <a href="#projects" class="rounded-full bg-brass px-6 py-3 text-sm font-medium text-noir transition hover:bg-brass2">View my work</a>
+            <a href="#contact" class="rounded-full border border-line px-6 py-3 text-sm font-medium text-ivory transition hover:border-brass">Get in touch</a>
+            <a href="https://github.com/uptonm" target="_blank" rel="noreferrer" class="ml-1 text-sm text-muted ul hover:text-ivory">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="reveal justify-self-center md:justify-self-end">
+          <div class="relative">
+            <div class="absolute -inset-2 rounded-[2rem] border border-brass/30"></div>
+            <img src="avatar.jpeg" alt="Mike Upton" class="relative h-56 w-56 rounded-[1.7rem] object-cover grayscale-[.2] sm:h-72 sm:w-72" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-6xl px-6"><div class="hair reveal"></div></div>
+
+    <!-- currently -->
+    <section class="mx-auto max-w-6xl px-6 py-6">
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-2 text-sm text-muted">
+        <span class="uppercase tracking-[0.2em] text-brass">Currently</span>
+        <span>Full-Stack Engineer II — Meta / Method Dev</span>
+        <span>Rust · React · TypeScript</span>
+        <span>Boston, MA</span>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="mx-auto max-w-6xl px-6 py-24">
+      <div class="grid gap-14 md:grid-cols-[0.8fr_1.2fr]">
+        <div class="reveal">
+          <p class="text-xs uppercase tracking-[0.25em] text-brass">About</p>
+          <h2 class="mt-4 font-display text-3xl font-light leading-snug md:text-4xl">A little about how I got here.</h2>
+        </div>
+        <div class="reveal space-y-6 text-lg leading-relaxed text-muted">
+          <p>My interests in software live mostly in the web space — React, TypeScript, and increasingly Rust. Over the last several years I've helped build an OSS/BSS/NMS platform that manages Meta's extensive global telecom footprint, from advanced fiber pathfinding to map-based project management used across the US and Europe.</p>
+          <p>Away from the keyboard: snowboarding, travel, concerts & festivals, and a bit of music production.</p>
+          <div class="grid grid-cols-3 gap-6 border-t border-line pt-8">
+            <div><div class="font-display text-4xl text-brass2">2018</div><div class="mt-1 text-sm">shipping since</div></div>
+            <div><div class="font-display text-4xl text-brass2">Meta</div><div class="mt-1 text-sm">current client</div></div>
+            <div><div class="font-display text-4xl text-brass2">Rust</div><div class="mt-1 text-sm">favorite lately</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- work -->
+    <section id="work" class="border-y border-line bg-panel/40">
+      <div class="mx-auto max-w-6xl px-6 py-24">
+        <div class="reveal mb-14"><p class="text-xs uppercase tracking-[0.25em] text-brass">Experience</p><h2 class="mt-4 font-display text-3xl font-light md:text-4xl">Where I've worked</h2></div>
+        <div class="space-y-3">
+          <article class="reveal group grid gap-4 rounded-2xl border border-transparent p-6 transition hover:border-line hover:bg-panel md:grid-cols-[220px_1fr]">
+            <div class="text-sm text-muted"><div class="text-brass2">2022 — Present</div><div>Method Dev for Meta</div><div>Cambridge, MA</div></div>
+            <div>
+              <h3 class="font-display text-xl text-ivory">Full-Stack Software Engineer II</h3>
+              <p class="mt-2 text-muted">OSS/BSS/NMS for Meta's global telecom footprint across React, TypeScript, GraphQL, Hasura, PostgreSQL, Go & Rust.</p>
+              <ul class="mt-4 space-y-2 text-sm text-muted">
+                <li class="flex gap-3"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass"></span>Led a new product for telecom project management.</li>
+                <li class="flex gap-3"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass"></span>Built PostGIS + pgRouting fiber pathfinding in a custom map framework.</li>
+                <li class="flex gap-3"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass"></span>Drove the team's Go → Rust migration.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="reveal group grid gap-4 rounded-2xl border border-transparent p-6 transition hover:border-line hover:bg-panel md:grid-cols-[220px_1fr]">
+            <div class="text-sm text-muted"><div class="text-brass2">2020 — 2022</div><div>Infogain for Facebook</div><div>Cambridge, MA</div></div>
+            <div>
+              <h3 class="font-display text-xl text-ivory">Full-Stack Software Engineer</h3>
+              <p class="mt-2 text-muted">Built a fiber-management platform from scratch, including an in-house MapLibre-GL framework for vector-tile datasets.</p>
+              <ul class="mt-4 space-y-2 text-sm text-muted">
+                <li class="flex gap-3"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass"></span>Sub-200ms Go/Redis APIs over PostgreSQL.</li>
+                <li class="flex gap-3"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass"></span>Plugin platform spanning thousands of miles of dark & lit fiber.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="reveal group grid gap-4 rounded-2xl border border-transparent p-6 transition hover:border-line hover:bg-panel md:grid-cols-[220px_1fr]">
+            <div class="text-sm text-muted"><div class="text-brass2">2018 — 2020</div><div>Fidelity Labs</div><div>Boston, MA</div></div>
+            <div>
+              <h3 class="font-display text-xl text-ivory">Co-Op / Software Engineer Intern</h3>
+              <p class="mt-2 text-muted">Led a full-stack analytics dashboard (React, TS, Nest.js) and an internal ESG-investing startup on Spring Boot + Angular.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects -->
+    <section id="projects" class="mx-auto max-w-6xl px-6 py-24">
+      <div class="reveal mb-14"><p class="text-xs uppercase tracking-[0.25em] text-brass">Selected work</p><h2 class="mt-4 font-display text-3xl font-light md:text-4xl">Things I've built</h2></div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <article class="reveal group flex flex-col rounded-2xl border border-line bg-panel p-7 transition hover:-translate-y-1 hover:border-brass/40">
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-brass/30 text-brass"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div>
+          <h3 class="font-display text-xl text-ivory">Fiber Pathfinding Engine</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">Advanced routing over fiber-optic networks with PostGIS & pgRouting, live in a custom MapLibre-GL framework.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs text-muted"><span class="rounded-full border border-line px-2.5 py-1">Rust</span><span class="rounded-full border border-line px-2.5 py-1">PostGIS</span><span class="rounded-full border border-line px-2.5 py-1">MapLibre</span></div>
+        </article>
+        <article class="reveal group flex flex-col rounded-2xl border border-line bg-panel p-7 transition hover:-translate-y-1 hover:border-brass/40">
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-brass/30 text-brass"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+          <h3 class="font-display text-xl text-ivory">Telecom OSS/BSS Platform</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">Plugin-based platform managing thousands of miles of dark & lit fiber across the US and Europe.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs text-muted"><span class="rounded-full border border-line px-2.5 py-1">React</span><span class="rounded-full border border-line px-2.5 py-1">GraphQL</span><span class="rounded-full border border-line px-2.5 py-1">Go</span></div>
+        </article>
+        <article class="reveal group flex flex-col rounded-2xl border border-line bg-panel p-7 transition hover:-translate-y-1 hover:border-brass/40">
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-brass/30 text-brass"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg></div>
+          <h3 class="font-display text-xl text-ivory">uptonm.dev</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">This site — a Turborepo with a shared design-system package on Next.js and Tailwind. Open source.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs text-muted"><span class="rounded-full border border-line px-2.5 py-1">Next.js</span><span class="rounded-full border border-line px-2.5 py-1">Tailwind</span><span class="rounded-full border border-line px-2.5 py-1">Turborepo</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- skills + education -->
+    <section class="border-t border-line bg-panel/40">
+      <div class="mx-auto grid max-w-6xl gap-14 px-6 py-24 md:grid-cols-2">
+        <div class="reveal">
+          <p class="text-xs uppercase tracking-[0.25em] text-brass">Toolkit</p>
+          <h2 class="mt-4 font-display text-3xl font-light md:text-4xl">What I work with</h2>
+          <div class="mt-8 flex flex-wrap gap-2.5">
+            <span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">React</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">TypeScript</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">Rust</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">Go</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">PostgreSQL</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">PostGIS</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">GraphQL</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">Redux</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">Docker</span><span class="rounded-full border border-line bg-panel2 px-4 py-2 text-sm">Kubernetes</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="text-xs uppercase tracking-[0.25em] text-brass">Education</p>
+          <h2 class="mt-4 font-display text-3xl font-light md:text-4xl">Where I studied</h2>
+          <div class="mt-8 rounded-2xl border border-line bg-panel2 p-7">
+            <div class="flex items-start justify-between gap-4">
+              <div><h3 class="font-display text-xl text-ivory">BS, Computer Science</h3><p class="mt-1 text-muted">Wentworth Institute of Technology</p></div>
+              <span class="whitespace-nowrap text-sm text-brass2">2016 — 2020</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" class="mx-auto max-w-6xl px-6 py-28 text-center">
+      <div class="reveal">
+        <p class="text-xs uppercase tracking-[0.25em] text-brass">Contact</p>
+        <h2 class="mx-auto mt-5 max-w-3xl font-display text-4xl font-light leading-tight md:text-6xl">Let's build something<br /><em class="italic text-brass2">worth using.</em></h2>
+        <p class="mx-auto mt-6 max-w-lg text-lg text-muted">Have a project in mind, or just want to talk shop about Rust and maps? My inbox is always open.</p>
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <a href="mailto:uptonm.dev@gmail.com" class="rounded-full bg-brass px-7 py-3.5 text-sm font-medium text-noir transition hover:bg-brass2">Say hello</a>
+          <a href="https://github.com/uptonm" target="_blank" rel="noreferrer" class="rounded-full border border-line px-7 py-3.5 text-sm font-medium text-ivory transition hover:border-brass">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted sm:flex-row">
+      <span class="font-display text-ivory">Mike Upton</span><span>© <span id="year"></span> · Designed & built in Boston</span>
+    </div>
+  </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => { if (scrollY > 12) nav.classList.add('bg-noir/80','backdrop-blur','border-line'); else nav.classList.remove('bg-noir/80','backdrop-blur','border-line'); });
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4 * 60) + 'ms'; io.observe(el); });
+</script>
+</body>
+</html>

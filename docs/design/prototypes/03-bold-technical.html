@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>mike upton — ~/engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0a0e0d',
+          panel: '#0f1513',
+          panel2: '#131a18',
+          line: '#1f2a27',
+          fg: '#e6f0ec',
+          muted: '#7f918b',
+          mint: '#34d399',
+          mint2: '#6ee7b7',
+          cyan: '#22d3ee',
+        },
+        fontFamily: {
+          mono: ['JetBrains Mono', 'monospace'],
+          display: ['Space Grotesk', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background:#0a0e0d;
+    background-image:
+      linear-gradient(rgba(52,211,153,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(52,211,153,.04) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+  .glow { text-shadow: 0 0 20px rgba(52,211,153,.45); }
+  .boxglow { box-shadow: 0 0 0 1px rgba(52,211,153,.15), 0 30px 80px -40px rgba(52,211,153,.35); }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  .cursor::after { content:"▋"; color:#34d399; animation: blink 1s steps(1) infinite; margin-left:2px; }
+  @keyframes blink { 50% { opacity: 0; } }
+  ::selection { background:#34d399; color:#0a0e0d; }
+  a.ln { position:relative; }
+  a.ln:hover { color:#6ee7b7; }
+  .scan { background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.015) 2px 3px); }
+</style>
+</head>
+<body class="scan font-sans text-fg antialiased">
+
+  <div class="fixed bottom-4 left-4 z-50 rounded border border-line bg-panel px-3 py-1.5 font-mono text-[11px] text-mint">03 · BOLD_TECHNICAL</div>
+
+  <!-- nav -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-40 border-b border-transparent transition-all">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 font-mono text-sm">
+      <a href="#top" class="font-bold"><span class="text-mint">~/</span>mike-upton</a>
+      <nav class="hidden items-center gap-7 text-muted md:flex">
+        <a href="#about" class="ln hover:text-fg"><span class="text-mint">#</span>about</a>
+        <a href="#work" class="ln hover:text-fg"><span class="text-mint">#</span>work</a>
+        <a href="#projects" class="ln hover:text-fg"><span class="text-mint">#</span>projects</a>
+        <a href="#contact" class="ln hover:text-fg"><span class="text-mint">#</span>contact</a>
+      </nav>
+      <a href="#contact" class="rounded border border-mint/40 px-3 py-1.5 text-mint transition hover:bg-mint hover:text-bg">./contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- hero -->
+    <section class="mx-auto max-w-6xl px-6 pb-16 pt-32 md:pt-40">
+      <div class="grid items-center gap-10 md:grid-cols-[1.1fr_1fr]">
+        <div>
+          <p class="reveal mb-5 font-mono text-sm text-mint">$ whoami</p>
+          <h1 class="reveal font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+            Mike Upton<span class="text-mint glow">_</span>
+          </h1>
+          <p class="reveal mt-4 font-mono text-lg text-mint2">full-stack engineer // systems &amp; maps</p>
+          <p class="reveal mt-6 max-w-lg leading-relaxed text-muted">
+            Boston-based engineer contracting for <span class="text-fg">Meta</span>, building the OSS/BSS/NMS systems that map and route a global telecom footprint. I live in React, TypeScript &amp; Rust.
+          </p>
+          <div class="reveal mt-8 flex flex-wrap gap-3 font-mono text-sm">
+            <a href="#projects" class="rounded bg-mint px-5 py-2.5 font-medium text-bg transition hover:bg-mint2">&gt; view_work</a>
+            <a href="#contact" class="rounded border border-line bg-panel px-5 py-2.5 text-fg transition hover:border-mint">&gt; get_in_touch</a>
+          </div>
+          <div class="reveal mt-6 flex gap-5 font-mono text-sm text-muted">
+            <a href="https://github.com/uptonm" target="_blank" rel="noreferrer" class="ln">[github]</a>
+            <a href="https://linkedin.com/in/uptonm" target="_blank" rel="noreferrer" class="ln">[linkedin]</a>
+            <span>[boston, ma]</span>
+          </div>
+        </div>
+        <!-- terminal window -->
+        <div class="reveal boxglow overflow-hidden rounded-xl border border-line bg-panel font-mono text-sm">
+          <div class="flex items-center gap-2 border-b border-line bg-panel2 px-4 py-3">
+            <span class="h-3 w-3 rounded-full bg-[#ff5f56]"></span>
+            <span class="h-3 w-3 rounded-full bg-[#ffbd2e]"></span>
+            <span class="h-3 w-3 rounded-full bg-[#27c93f]"></span>
+            <span class="ml-3 text-xs text-muted">mike@uptonm.dev: ~</span>
+          </div>
+          <div class="space-y-1.5 p-5 leading-relaxed">
+            <div><span class="text-mint">➜</span> <span class="text-cyan">~</span> cat profile.json</div>
+            <div class="text-fg">{</div>
+            <div class="pl-4"><span class="text-mint2">"role"</span>: <span class="text-fg">"Full-Stack Engineer II"</span>,</div>
+            <div class="pl-4"><span class="text-mint2">"client"</span>: <span class="text-fg">"Meta · Method Dev"</span>,</div>
+            <div class="pl-4"><span class="text-mint2">"focus"</span>: <span class="text-fg">["telecom", "geospatial"]</span>,</div>
+            <div class="pl-4"><span class="text-mint2">"langs"</span>: <span class="text-fg">["rust", "ts", "go"]</span>,</div>
+            <div class="pl-4"><span class="text-mint2">"status"</span>: <span class="text-cyan">"available"</span></div>
+            <div class="text-fg">}</div>
+            <div class="pt-1"><span class="text-mint">➜</span> <span class="text-cyan">~</span> <span id="type" class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <!-- stats strip -->
+      <div class="reveal mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line font-mono md:grid-cols-4">
+        <div class="bg-panel p-5"><div class="text-2xl font-bold text-mint">2018</div><div class="mt-1 text-xs text-muted">// shipping since</div></div>
+        <div class="bg-panel p-5"><div class="text-2xl font-bold text-mint">&lt;200ms</div><div class="mt-1 text-xs text-muted">// API SLA built</div></div>
+        <div class="bg-panel p-5"><div class="text-2xl font-bold text-mint">Go→Rust</div><div class="mt-1 text-xs text-muted">// migration led</div></div>
+        <div class="bg-panel p-5"><div class="text-2xl font-bold text-mint">1000s mi</div><div class="mt-1 text-xs text-muted">// fiber mapped</div></div>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="mx-auto max-w-6xl px-6 py-20">
+      <p class="reveal mb-8 font-mono text-sm text-mint">// 01_about</p>
+      <div class="grid gap-10 md:grid-cols-2">
+        <h2 class="reveal font-display text-3xl font-bold leading-snug md:text-4xl">I build calm interfaces on top of gnarly systems.</h2>
+        <div class="reveal space-y-5 leading-relaxed text-muted">
+          <p>My work lives in the web space — React, TypeScript, and increasingly Rust. I've helped build an OSS/BSS/NMS platform that manages Meta's global telecom footprint, from advanced fiber pathfinding to map-based project management deployed across the US and Europe.</p>
+          <p>Off the clock: snowboarding, travel, live music, and a bit of music production.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- work -->
+    <section id="work" class="mx-auto max-w-6xl px-6 py-20">
+      <p class="reveal mb-10 font-mono text-sm text-mint">// 02_experience</p>
+      <div class="space-y-4">
+        <article class="reveal group rounded-xl border border-line bg-panel/60 p-6 transition hover:border-mint/40 hover:bg-panel">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-display text-xl font-bold text-fg">Full-Stack Software Engineer II</h3>
+            <span class="font-mono text-sm text-mint">2022 — present</span>
+          </div>
+          <p class="mt-1 font-mono text-sm text-muted">Method Dev for Meta · Cambridge, MA</p>
+          <p class="mt-3 text-muted">OSS/BSS/NMS for Meta's global telecom footprint across React, TypeScript, GraphQL, Hasura, PostgreSQL, Go &amp; Rust.</p>
+          <ul class="mt-4 space-y-1.5 font-mono text-sm text-muted">
+            <li><span class="text-mint">+</span> Led a new product for telecom project management.</li>
+            <li><span class="text-mint">+</span> Built PostGIS + pgRouting fiber pathfinding in a custom map framework.</li>
+            <li><span class="text-mint">+</span> Drove the team's Go → Rust migration.</li>
+          </ul>
+        </article>
+        <article class="reveal group rounded-xl border border-line bg-panel/60 p-6 transition hover:border-mint/40 hover:bg-panel">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-display text-xl font-bold text-fg">Full-Stack Software Engineer</h3>
+            <span class="font-mono text-sm text-mint">2020 — 2022</span>
+          </div>
+          <p class="mt-1 font-mono text-sm text-muted">Infogain for Facebook · Cambridge, MA</p>
+          <p class="mt-3 text-muted">Built a fiber-management platform from scratch, including an in-house MapLibre-GL framework for vector-tile datasets.</p>
+          <ul class="mt-4 space-y-1.5 font-mono text-sm text-muted">
+            <li><span class="text-mint">+</span> Sub-200ms Go/Redis APIs over PostgreSQL.</li>
+            <li><span class="text-mint">+</span> Plugin ecosystem spanning thousands of miles of dark &amp; lit fiber.</li>
+          </ul>
+        </article>
+        <article class="reveal group rounded-xl border border-line bg-panel/60 p-6 transition hover:border-mint/40 hover:bg-panel">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-display text-xl font-bold text-fg">Co-Op / Software Engineer Intern</h3>
+            <span class="font-mono text-sm text-mint">2018 — 2020</span>
+          </div>
+          <p class="mt-1 font-mono text-sm text-muted">Fidelity Labs · Boston, MA</p>
+          <p class="mt-3 text-muted">Led a full-stack analytics dashboard (React, TS, Nest.js) and an internal ESG-investing startup on Spring Boot + Angular.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- projects -->
+    <section id="projects" class="mx-auto max-w-6xl px-6 py-20">
+      <p class="reveal mb-10 font-mono text-sm text-mint">// 03_projects</p>
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="reveal group rounded-xl border border-line bg-panel p-6 transition hover:-translate-y-1 hover:border-mint/50 hover:boxglow">
+          <div class="mb-4 font-mono text-xs text-muted">01 · repo</div>
+          <h3 class="font-display text-lg font-bold">Fiber Pathfinding Engine</h3>
+          <p class="mt-2 text-sm text-muted">Advanced routing over fiber-optic networks with PostGIS &amp; pgRouting, rendered in a custom MapLibre-GL framework.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-xs">
+            <span class="rounded border border-line px-2 py-0.5 text-mint2">rust</span><span class="rounded border border-line px-2 py-0.5 text-mint2">postgis</span><span class="rounded border border-line px-2 py-0.5 text-mint2">maplibre</span>
+          </div>
+        </article>
+        <article class="reveal group rounded-xl border border-line bg-panel p-6 transition hover:-translate-y-1 hover:border-mint/50 hover:boxglow">
+          <div class="mb-4 font-mono text-xs text-muted">02 · platform</div>
+          <h3 class="font-display text-lg font-bold">OSS/BSS Platform</h3>
+          <p class="mt-2 text-sm text-muted">Plugin-based platform managing thousands of miles of dark &amp; lit fiber across the US and Europe.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-xs">
+            <span class="rounded border border-line px-2 py-0.5 text-mint2">react</span><span class="rounded border border-line px-2 py-0.5 text-mint2">graphql</span><span class="rounded border border-line px-2 py-0.5 text-mint2">go</span>
+          </div>
+        </article>
+        <article class="reveal group rounded-xl border border-line bg-panel p-6 transition hover:-translate-y-1 hover:border-mint/50 hover:boxglow">
+          <div class="mb-4 font-mono text-xs text-muted">03 · oss</div>
+          <h3 class="font-display text-lg font-bold">uptonm.dev</h3>
+          <p class="mt-2 text-sm text-muted">This site — a Turborepo with a shared design-system package on Next.js and Tailwind.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-xs">
+            <span class="rounded border border-line px-2 py-0.5 text-mint2">next.js</span><span class="rounded border border-line px-2 py-0.5 text-mint2">tailwind</span><span class="rounded border border-line px-2 py-0.5 text-mint2">turbo</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- skills + education -->
+    <section class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-14 md:grid-cols-2">
+        <div>
+          <p class="reveal mb-8 font-mono text-sm text-mint">// 04_stack</p>
+          <div class="reveal flex flex-wrap gap-2 font-mono text-sm">
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">react</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">typescript</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">rust</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">go</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">postgresql</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">postgis</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">graphql</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">redux</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">docker</span>
+            <span class="rounded border border-line bg-panel px-3 py-1.5 text-mint2">kubernetes</span>
+          </div>
+        </div>
+        <div>
+          <p class="reveal mb-8 font-mono text-sm text-mint">// 05_education</p>
+          <div class="reveal rounded-xl border border-line bg-panel p-6">
+            <div class="flex items-baseline justify-between font-mono text-sm"><span class="text-fg">BS, Computer Science</span><span class="text-mint">2016 — 2020</span></div>
+            <p class="mt-2 text-muted">Wentworth Institute of Technology</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" class="mx-auto max-w-6xl px-6 py-24">
+      <div class="reveal boxglow rounded-2xl border border-mint/30 bg-panel p-10 text-center md:p-16">
+        <p class="font-mono text-sm text-mint">// 06_contact</p>
+        <h2 class="mt-4 font-display text-4xl font-bold md:text-6xl">$ ./say_hello<span class="cursor"></span></h2>
+        <p class="mx-auto mt-5 max-w-md text-muted">Building something at the intersection of the web and the physical world? Let's talk.</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono text-sm">
+          <a href="mailto:uptonm.dev@gmail.com" class="rounded bg-mint px-6 py-3 font-medium text-bg transition hover:bg-mint2">uptonm.dev@gmail.com</a>
+          <a href="https://github.com/uptonm" target="_blank" rel="noreferrer" class="rounded border border-line px-6 py-3 text-fg transition hover:border-mint">github ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 font-mono text-xs text-muted">
+      <span><span class="text-mint">~/</span>mike-upton</span><span>© <span id="year"></span> · built in boston</span>
+    </div>
+  </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => {
+    if (scrollY > 12) nav.classList.add('bg-bg/80','backdrop-blur','border-line');
+    else nav.classList.remove('bg-bg/80','backdrop-blur','border-line');
+  });
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  // typing effect
+  const cmds = ['ls ./projects', 'cat experience.md', 'rustc --release', 'git push origin main'];
+  const el = document.getElementById('type'); let ci = 0, chi = 0;
+  function tick() {
+    const c = cmds[ci];
+    el.textContent = c.slice(0, chi);
+    if (chi < c.length) { chi++; setTimeout(tick, 90); }
+    else { setTimeout(() => { chi = 0; ci = (ci + 1) % cmds.length; tick(); }, 1600); }
+  }
+  tick();
+</script>
+</body>
+</html>
