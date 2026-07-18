@@ -21,12 +21,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(copy.brand.url),
+  alternates: { canonical: "/" },
   title: copy.seo.title,
   applicationName: "uptonm.dev",
   description: copy.seo.description,
   keywords: copy.seo.keywords,
   authors: [{ name: copy.brand.name, url: copy.brand.url }],
   creator: copy.brand.name,
+  publisher: copy.brand.name,
+  category: "technology",
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -52,6 +56,20 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: copy.brand.name,
+  url: copy.brand.url,
+  jobTitle: "Software Engineer",
+  homeLocation: {
+    "@type": "Place",
+    name: copy.home.location,
+  },
+  sameAs: copy.socials.map((social) => social.href),
+  knowsAbout: copy.seo.keywords,
+};
+
 // Set the theme class before first paint to avoid a flash of the wrong theme.
 const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
 
@@ -67,6 +85,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-screen overflow-x-hidden">
