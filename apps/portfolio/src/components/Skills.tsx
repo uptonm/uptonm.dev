@@ -16,16 +16,21 @@ export function Skills() {
             <h3 className="text-sm font-medium text-muted-foreground">
               {group.category}
             </h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-border bg-card px-3.5 py-1.5 text-sm"
-                >
-                  {item}
-                </span>
+            <ul
+              className="mt-3 flex flex-wrap gap-2"
+              aria-label={group.category}
+            >
+              {group.items.map((item, index) => (
+                <li key={item} className="contents">
+                  <span className="rounded-full border border-border bg-card px-3.5 py-1.5 text-sm">
+                    {item}
+                  </span>
+                  {index < group.items.length - 1 ? (
+                    <span className="sr-only">, </span>
+                  ) : null}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         ))}
       </div>

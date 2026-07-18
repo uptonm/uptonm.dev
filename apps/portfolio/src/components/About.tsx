@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 const stats = [
   { value: "2018", label: "shipping since" },
   { value: "Meta", label: "current team" },
-  { value: "Rust", label: "favourite lately" },
+  { value: "Rust", label: "favorite lately" },
 ];
 
 export function About() {
@@ -31,7 +31,9 @@ export function About() {
                 <div className="font-display text-3xl font-normal text-brand-strong md:text-4xl">
                   {s.value}
                 </div>
-                <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>
+                <div className="mt-1 text-sm text-muted-foreground">
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>
