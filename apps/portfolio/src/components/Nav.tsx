@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const links = [
   { href: "#about", label: copy.sections.about },
   { href: "#work", label: copy.sections.workExperience },
+  { href: "#skills", label: copy.sections.skills },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -29,7 +30,10 @@ export function Nav() {
       )}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-display text-lg font-semibold tracking-tight">
+        <a
+          href="#top"
+          className="font-display text-lg font-semibold tracking-tight"
+        >
           {copy.brand.name}
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">

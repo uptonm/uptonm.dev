@@ -3,17 +3,19 @@ import { Reveal } from "@/components/Reveal";
 
 export function Skills() {
   return (
-    <Reveal>
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-        {copy.sections.skills}
-      </p>
-      <h2 className="mt-3 font-display text-3xl font-light md:text-4xl">
-        What I work with
-      </h2>
-      <div className="mt-8 space-y-6">
+    <Reveal className="grid gap-10 md:grid-cols-[0.65fr_1.35fr] md:gap-12">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+          {copy.sections.skills}
+        </p>
+        <h2 className="mt-3 font-display text-3xl font-light md:text-4xl">
+          What I work with
+        </h2>
+      </div>
+      <div className="space-y-6">
         {copy.skills.map((group) => (
           <div key={group.category}>
-            <h3 className="text-sm font-medium text-muted-foreground">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               {group.category}
             </h3>
             <ul
