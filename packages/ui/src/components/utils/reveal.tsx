@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@uptonm/ui/lib/utils";
 import { ReactNode, useEffect, useRef, useState } from "react";
+import { cn } from "../../lib/utils";
 
 type RevealProps = {
   children: ReactNode;

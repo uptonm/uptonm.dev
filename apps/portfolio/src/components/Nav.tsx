@@ -2,6 +2,7 @@
 
 import { copy } from "@/lib/copy";
 import { cn } from "@uptonm/ui/lib/utils";
+import { Button } from "@uptonm/ui/components/base/button";
 import { ThemeToggle } from "@uptonm/ui/components/utils/theme-toggle";
 import { useEffect, useState } from "react";
 
@@ -49,12 +50,9 @@ export function Nav() {
         </nav>
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a
-            href="#contact"
-            className="rounded-full bg-brand px-4 py-2 text-sm font-medium text-on-brand transition-colors hover:bg-brand-hover"
-          >
-            Let&apos;s talk
-          </a>
+          <Button asChild variant="brand" size="pillSm">
+            <a href="#contact">Let&apos;s talk</a>
+          </Button>
         </div>
       </div>
     </header>

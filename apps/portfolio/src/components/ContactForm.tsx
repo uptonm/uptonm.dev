@@ -1,6 +1,7 @@
 "use client";
 
 import { sendContactMessage } from "@/lib/contact";
+import { Button } from "@uptonm/ui/components/base/button";
 import { useActionState } from "react";
 
 type ContactState = { ok: boolean; error?: string } | null;
@@ -96,13 +97,15 @@ export function ContactForm() {
         </p>
       ) : null}
 
-      <button
+      <Button
         type="submit"
+        variant="brand"
+        size="pillLg"
         disabled={pending}
-        className="w-full rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-on-brand transition-colors hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="w-full sm:w-auto"
       >
         {pending ? "Sending…" : "Send message"}
-      </button>
+      </Button>
     </form>
   );
 }

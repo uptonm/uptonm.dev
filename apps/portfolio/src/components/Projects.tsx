@@ -1,5 +1,5 @@
 import { copy } from "@/lib/copy";
-import { Reveal } from "@/components/Reveal";
+import { Reveal } from "@uptonm/ui/components/utils/reveal";
 import { Code2, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
