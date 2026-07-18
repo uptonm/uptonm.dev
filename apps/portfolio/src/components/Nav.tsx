@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 
 const links = [
   { href: "#about", label: copy.sections.about },
+  { href: "#projects", label: "Work" },
   { href: "#work", label: copy.sections.workExperience },
   { href: "#skills", label: copy.sections.skills },
-  { href: "#contact", label: "Contact" },
 ];
 
 export function Nav() {

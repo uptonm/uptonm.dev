@@ -34,11 +34,20 @@ export const metadata: Metadata = {
     siteName: "uptonm.dev",
     title: copy.seo.title,
     description: copy.seo.description,
+    images: [
+      {
+        url: new URL("/og.jpg", copy.brand.url).toString(),
+        width: 1200,
+        height: 630,
+        alt: "Mike Upton — software engineer across products, systems, and AI",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: copy.seo.title,
     description: copy.seo.description,
+    images: [new URL("/og.jpg", copy.brand.url).toString()],
   },
   icons: { icon: "/favicon.ico" },
 };

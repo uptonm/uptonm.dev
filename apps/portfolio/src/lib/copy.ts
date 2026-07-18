@@ -46,10 +46,23 @@ export interface SiteCopy {
 
   sections: {
     about: string;
+    selectedWork: string;
     workExperience: string;
     education: string;
     skills: string;
   };
+
+  projects: {
+    key: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    repositoryUrl: string;
+    liveUrl?: string;
+    image?: string;
+    imageAlt?: string;
+    technologies: string[];
+  }[];
 
   workExperience: {
     key: string;
@@ -145,10 +158,45 @@ export const copy: SiteCopy = {
 
   sections: {
     about: "About",
+    selectedWork: "Selected Work",
     workExperience: "Experience",
     education: "Education",
     skills: "Skills",
   },
+
+  projects: [
+    {
+      key: "maplibre-style-editor",
+      eyebrow: "Featured project",
+      title: "MapLibre GL Style Editor",
+      description:
+        "A deployed browser-based editor for changing MapLibre layer paint, layout, zoom, and filter properties against a live map preview.",
+      repositoryUrl: "https://github.com/uptonm/maplibre-gl-style-editor",
+      liveUrl: "https://map.uptonm.dev/",
+      image: "/projects/maplibre-style-editor.jpg",
+      imageAlt:
+        "MapLibre GL Style Editor showing Washington, DC Metro lines and stations",
+      technologies: ["MapLibre GL", "Next.js", "TypeScript", "Turf"],
+    },
+    {
+      key: "cch-2024",
+      eyebrow: "Backend Rust",
+      title: "Christmas Code Hunt 2024",
+      description:
+        "Eight Shuttle challenge sets in one Axum service, spanning rate limiting, JWTs, PostgreSQL, multipart uploads, and domain-heavy API design.",
+      repositoryUrl: "https://github.com/uptonm/cch-2024",
+      technologies: ["Rust", "Axum", "PostgreSQL", "Shuttle"],
+    },
+    {
+      key: "terraform-hasura",
+      eyebrow: "Infrastructure",
+      title: "Terraform Hasura",
+      description:
+        "A reusable multi-environment Hasura deployment built with Terraform modules, Kubernetes, Traefik, and Cloudflare DNS-challenge TLS.",
+      repositoryUrl: "https://github.com/uptonm/terraform-hasura",
+      technologies: ["Terraform", "Kubernetes", "Hasura", "Traefik"],
+    },
+  ],
 
   workExperience: [
     {

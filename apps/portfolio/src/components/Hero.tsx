@@ -26,16 +26,10 @@ export function Hero() {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
-              href="#work"
+              href="#projects"
               className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-on-brand transition-colors hover:bg-brand-hover"
             >
               View my work
-            </a>
-            <a
-              href="#contact"
-              className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium transition-colors hover:border-foreground"
-            >
-              Get in touch
             </a>
             {copy.socials.map((s) => (
               <a
