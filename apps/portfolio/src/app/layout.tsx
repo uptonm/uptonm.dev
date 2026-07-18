@@ -1,4 +1,6 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import "@/styles/globals.css";
+import { clerkAppearance } from "@/lib/clerk-appearance";
 import { copy } from "@/lib/copy";
 import { ThemeProvider } from "@uptonm/ui/components/utils/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
@@ -93,15 +95,17 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-screen overflow-x-hidden">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-on-brand focus:outline-none"
-        >
-          Skip to main content
-        </a>
-        <ThemeProvider>{children}</ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+        <ClerkProvider appearance={clerkAppearance}>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-on-brand focus:outline-none"
+          >
+            Skip to main content
+          </a>
+          <ThemeProvider>{children}</ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
+        </ClerkProvider>
       </body>
     </html>
   );
