@@ -53,7 +53,6 @@ export const metadata: Metadata = {
     description: copy.seo.description,
     images: [new URL("/og.jpg", copy.brand.url).toString()],
   },
-  icons: { icon: "/favicon.ico" },
 };
 
 const structuredData = {
