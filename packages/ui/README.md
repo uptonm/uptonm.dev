@@ -28,6 +28,7 @@ from the app's global stylesheet.
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `base/button`                                 | `Button` with `brand` / `soft` variants and `pillSm`/`pill`/`pillLg` sizes (plus the standard shadcn variants). Use `asChild` to render an `<a>`. |
 | `base/badge`                                  | Pill/tag primitive (`soft` / `outline`, sizes `sm`/`md`/`lg`).                                                                                    |
+| `base/switch`                                 | Radix switch (`on`/`off`); use for boolean settings.                                                                                              |
 | `base/card`                                   | Bordered card surface with an optional title.                                                                                                     |
 | `base/section-heading`                        | The brand eyebrow + display-serif title that opens each section.                                                                                  |
 | `base/social-links`                           | A row of circular social icon links (renders a fragment).                                                                                         |
