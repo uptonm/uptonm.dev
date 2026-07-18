@@ -1,6 +1,7 @@
 import { copy } from "@/lib/copy";
 import { renderDateRange } from "@/lib/utils";
 import { Reveal } from "@/components/Reveal";
+import { cn } from "@uptonm/ui/lib/utils";
 
 export function WorkExperience() {
   return (
@@ -20,17 +21,38 @@ export function WorkExperience() {
             <Reveal
               key={item.key}
               delay={(i % 3) * 60}
-              className="group grid gap-4 rounded-2xl border border-transparent p-6 transition-colors hover:border-border hover:bg-card md:grid-cols-[220px_1fr]"
+              className="group grid gap-4 rounded-2xl border border-transparent p-6 transition-colors hover:border-border hover:bg-card md:grid-cols-[170px_32px_1fr]"
             >
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-muted-foreground md:text-right">
                 <div className="font-medium text-foreground">
                   {renderDateRange(item.startDate, item.endDate)}
                 </div>
                 <div>{item.location}</div>
               </div>
+              <div className="relative hidden md:block" aria-hidden="true">
+                <span
+                  className={cn(
+                    "absolute left-1/2 w-px -translate-x-1/2 bg-border",
+                    i === 0 ? "top-3" : "-top-10",
+                    i === copy.workExperience.length - 1
+                      ? "bottom-[calc(100%-0.75rem)]"
+                      : "-bottom-10",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute left-1/2 top-3 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand",
+                    i === 0
+                      ? "h-4 w-4 bg-brand ring-4 ring-brand-soft"
+                      : "h-3 w-3 bg-secondary transition-colors group-hover:bg-card",
+                  )}
+                />
+              </div>
               <div>
                 <div className="flex flex-wrap items-center gap-3">
-                  <h3 className="font-display text-xl text-foreground">{item.role}</h3>
+                  <h3 className="font-display text-xl text-foreground">
+                    {item.role}
+                  </h3>
                   {item.employmentType ? (
                     <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
                       {item.employmentType}
