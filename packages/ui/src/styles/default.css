@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -27,6 +27,7 @@
   --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-input: var(--input);
+  --color-field: var(--field);
   --color-ring: var(--ring);
 
   --color-brand: var(--brand);
@@ -62,7 +63,8 @@
   --accent-foreground: #2b2621;
   --destructive: #b3261e;
   --border: #e8dccb;
-  --input: #e8dccb;
+  --input: #948473;
+  --field: #fffdf9;
   --ring: #c05f3f;
 
   --brand: #c05f3f;
@@ -96,7 +98,8 @@
   --accent-foreground: #ece5da;
   --destructive: #e06c60;
   --border: #332c26;
-  --input: #332c26;
+  --input: #7d6b58;
+  --field: #241e1a;
   --ring: #cba24a;
 
   --brand: #cba24a;
@@ -105,7 +108,7 @@
   --brand-strong: #e0c079;
   --on-brand: #141110;
 
-  --glow: rgba(203, 162, 74, 0.10);
+  --glow: rgba(203, 162, 74, 0.1);
   --grain-opacity: 1;
   --portrait-filter: grayscale(0.2) contrast(1.02);
 }

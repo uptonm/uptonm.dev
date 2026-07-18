@@ -6,7 +6,7 @@ import { useActionState } from "react";
 type ContactState = { ok: boolean; error?: string } | null;
 
 const fieldClass =
-  "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground/70 focus-visible:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  "w-full rounded-xl border border-input bg-field px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus-visible:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 export function ContactForm() {
   const [state, formAction, pending] = useActionState<ContactState, FormData>(
@@ -17,7 +17,9 @@ export function ContactForm() {
   if (state?.ok) {
     return (
       <div className="rounded-2xl border border-border bg-card p-8 text-center">
-        <p className="font-display text-xl text-foreground">Thanks — message sent.</p>
+        <p className="font-display text-xl text-foreground">
+          Thanks — message sent.
+        </p>
         <p className="mt-2 text-sm text-muted-foreground">
           I&apos;ll get back to you soon.
         </p>
@@ -37,7 +39,10 @@ export function ContactForm() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-sm text-muted-foreground">
+          <label
+            htmlFor="name"
+            className="mb-1.5 block text-sm text-muted-foreground"
+          >
             Name
           </label>
           <input
@@ -50,7 +55,10 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-sm text-muted-foreground">
+          <label
+            htmlFor="email"
+            className="mb-1.5 block text-sm text-muted-foreground"
+          >
             Email
           </label>
           <input
@@ -66,7 +74,10 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-sm text-muted-foreground">
+        <label
+          htmlFor="message"
+          className="mb-1.5 block text-sm text-muted-foreground"
+        >
           Message
         </label>
         <textarea
