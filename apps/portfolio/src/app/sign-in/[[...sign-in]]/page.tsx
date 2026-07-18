@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function SignInPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-16">
-      <SignIn />
+      <SignIn forceRedirectUrl="/admin" fallbackRedirectUrl="/admin" />
       <Link
         href="/"
         className="text-sm text-muted-foreground transition-colors hover:text-foreground"

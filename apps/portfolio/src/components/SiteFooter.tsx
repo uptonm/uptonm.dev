@@ -1,5 +1,6 @@
+import { AdminUserButton } from "@/components/AdminUserButton";
 import { copy } from "@/lib/copy";
-import { Show, UserButton } from "@clerk/nextjs";
+import { Show } from "@clerk/nextjs";
 import Link from "next/link";
 
 export function SiteFooter() {
@@ -9,7 +10,7 @@ export function SiteFooter() {
         <span className="font-display text-foreground">{copy.brand.name}</span>
         <span className="flex items-center gap-2">
           <Show when="signed-out">
-            {/* Discreet, unadvertised entry to the sign-in page. */}
+            {/* Discreet, unadvertised entry to the sign-in → dashboard flow. */}
             <Link
               href="/sign-in"
               aria-label="Sign in"
@@ -19,7 +20,7 @@ export function SiteFooter() {
             </Link>
           </Show>
           <Show when="signed-in">
-            <UserButton />
+            <AdminUserButton />
           </Show>
           {new Date().getFullYear()} · Built in {copy.home.location}
         </span>
