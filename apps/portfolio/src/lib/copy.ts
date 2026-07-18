@@ -41,6 +41,7 @@ export interface SiteCopy {
     availability: string;
     location: string;
     bio: string[];
+    currentFocus: string;
   };
 
   sections: {
@@ -95,7 +96,7 @@ export const copy: SiteCopy = {
   seo: {
     title: "Mike Upton — Software Engineer",
     description:
-      "Full-stack software engineer at Meta building large-scale systems to plan, operate, and manage one of the world's biggest telecom networks. React, TypeScript, Rust, Go, C++, PostgreSQL.",
+      "Software engineer at Meta working across full-stack products, systems, developer tools, and the next generation of large language models. React, TypeScript, Rust, Go, C++, PostgreSQL.",
     keywords: [
       "Mike Upton",
       "software engineer",
@@ -107,6 +108,8 @@ export const copy: SiteCopy = {
       "Go",
       "C++",
       "PostgreSQL",
+      "AI",
+      "machine learning",
       "geospatial",
       "distributed systems",
       "Boston",
@@ -127,15 +130,17 @@ export const copy: SiteCopy = {
   ],
 
   home: {
-    tagline:
-      "I turn massive, real-world systems into software people love to use.",
+    tagline: "I build software for problems that don't fit neatly in one box.",
     availability: "Open to interesting problems",
     location: "Boston, MA",
     bio: [
-      `I'm a full-stack software engineer. I take big, messy, real-world systems and turn them into software people actually enjoy using.`,
-      `Most days that's React and TypeScript up front, with Rust, Go, and PostgreSQL underneath. I care about system design, developer experience, and shipping work that lasts.`,
+      `My background spans product applications, backend services, data-intensive systems, developer tooling, and infrastructure. I'm at my best when a problem crosses those boundaries and needs someone to make the pieces cohere.`,
+      `At Meta, I'm currently helping build the next generation of large language models. Before moving into AI, I spent several years building mapping, planning, and operations software for global telecom infrastructure.`,
+      `I like taking work from an ambiguous problem to something people can depend on: learning the domain, finding the right abstractions, making the tradeoffs explicit, and staying close enough to the product to know whether the engineering is actually useful.`,
       `Outside of work, you'll find me snowboarding, on the golf course, traveling, at concerts, or making music.`,
     ],
+    currentFocus:
+      "Helping build the next generation of large language models at Meta.",
   },
 
   sections: {
@@ -152,11 +157,10 @@ export const copy: SiteCopy = {
       location: "Meta · Cambridge, MA",
       employmentType: "Full-time",
       startDate: "01/01/2025",
-      description: `Joined Meta full-time on the same team I'd contracted with since 2020. I build the software Meta uses to plan, build, operate, and keep inventory of one of the world's largest telecom networks. My work spans the full stack, from database and services to the map-based interfaces teams rely on every day.`,
+      description: `Joined Meta full-time in 2025 after five years as a contractor. I now help build the next generation of large language models, bringing experience across product interfaces, backend services, data systems, and developer tooling to a new class of problems.`,
       keyPoints: [
-        "Design and ship full-stack features across React, TypeScript, GraphQL, PostgreSQL, and Rust for the platform that runs day-to-day network operations.",
-        "Turn complex, large-scale infrastructure workflows — project management, operations, and inventory — into interfaces engineers and operators actually want to use.",
-        "Partner with infrastructure teams to scope requirements and set technical direction for new areas of the platform.",
+        "Help build software for the next generation of large language models.",
+        "Moved into AI after years building Meta's telecom planning and operations platform.",
       ],
     },
     {
@@ -169,7 +173,7 @@ export const copy: SiteCopy = {
       description: `Grew into a senior engineer on the same team as the platform scaled, taking ownership of performance-critical services and the cross-cutting technical decisions behind them.`,
       keyPoints: [
         "Led the team's migration from Go to Rust for backend services — wrote the standards, ran the code reviews, and set patterns other engineers built on.",
-        "Owned performance and reliability for core services handling continental-scale network data.",
+        "Cut response times on targeted network-data workloads from 2–5 seconds to roughly 20ms–1s, depending on the operation.",
         "Shaped technical direction for new areas of the platform and mentored engineers through design reviews.",
       ],
     },
@@ -197,7 +201,7 @@ export const copy: SiteCopy = {
       description: `Founding engineer on the platform that became this telecom management system. Built the application from scratch during the pandemic — the frontend architecture, mapping framework, and plugin system still in use today.`,
       keyPoints: [
         "Architected an in-house geospatial mapping framework on MapLibre-GL for visualizing and editing vector-tile datasets covering thousands of miles of fiber.",
-        "Designed a plugin-based project-management system for tracking networks from construction through maintenance, adopted across US and European deployments.",
+        "Designed a plugin-based project-management system for tracking networks from construction through maintenance across NORAM, EMEA, and APAC.",
         "Built Go APIs over PostgreSQL with Redis caching, holding sub-200ms p99 latency on complex aggregations over large telecom datasets.",
       ],
     },
@@ -268,7 +272,7 @@ export const copy: SiteCopy = {
   ],
 
   contact: {
-    heading: "Let's build something worth using.",
+    heading: "Let's tackle a hard systems problem.",
     blurb:
       "Have a role, a project, or just want to talk shop about Rust, maps, and large-scale systems? My inbox is always open.",
   },
