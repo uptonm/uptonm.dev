@@ -67,6 +67,7 @@ export interface SiteCopy {
     degree: string;
     startDate: string;
     endDate?: string;
+    coursework: string[];
   }[];
 
   skills: {
@@ -126,7 +127,8 @@ export const copy: SiteCopy = {
   ],
 
   home: {
-    tagline: "I turn massive, real-world systems into software people love to use.",
+    tagline:
+      "I turn massive, real-world systems into software people love to use.",
     availability: "Open to interesting problems",
     location: "Boston, MA",
     bio: [
@@ -221,25 +223,47 @@ export const copy: SiteCopy = {
       degree: "BS Computer Science",
       startDate: "08/01/2016",
       endDate: "08/01/2020",
+      coursework: [
+        "Parallel & Distributed Computing",
+        "Databases",
+        "Operating Systems",
+        "Programming Languages & Compilers",
+        "Algorithms",
+        "Network Programming",
+        "Image Processing / Computer Vision",
+      ],
     },
   ],
 
   skills: [
     {
-      category: "Languages",
-      items: ["TypeScript", "Rust", "Go", "C++", "PHP", "Hack", "Python", "Node.js"],
+      category: "Primary",
+      items: ["TypeScript", "Rust", "Go", "React", "PostgreSQL"],
     },
     {
-      category: "Frontend",
-      items: ["React", "Next.js", "Tailwind CSS", "MapLibre-GL"],
-    },
-    {
-      category: "Data & APIs",
-      items: ["PostgreSQL", "PostGIS", "MySQL", "GraphQL", "tRPC", "Apache Thrift", "gRPC", "Redis", "Elasticsearch"],
-    },
-    {
-      category: "Infrastructure",
-      items: ["Docker", "Kubernetes", "Terraform", "OpenTelemetry"],
+      category: "Experienced with",
+      items: [
+        "C++",
+        "PHP",
+        "Hack",
+        "Python",
+        "Node.js",
+        "Next.js",
+        "Tailwind CSS",
+        "MapLibre-GL",
+        "PostGIS",
+        "MySQL",
+        "GraphQL",
+        "tRPC",
+        "Apache Thrift",
+        "gRPC",
+        "Redis",
+        "Elasticsearch",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "OpenTelemetry",
+      ],
     },
   ],
 

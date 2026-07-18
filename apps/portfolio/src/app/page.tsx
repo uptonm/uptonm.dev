@@ -15,8 +15,8 @@ export default function HomePage() {
         <Hero />
         <About />
         <WorkExperience />
-        <section className="border-t border-border bg-secondary/40">
-          <div className="mx-auto grid max-w-5xl gap-12 px-6 py-20 md:grid-cols-2 md:py-24">
+        <section id="skills" className="border-t border-border bg-secondary/40">
+          <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
             <Skills />
             <Education />
           </div>
