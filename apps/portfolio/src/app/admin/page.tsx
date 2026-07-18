@@ -1,9 +1,11 @@
 import { AdminUserButton } from "@/components/AdminUserButton";
+import { FleetGates } from "@/components/FleetGates";
+import { GATED_APPS, getGates } from "@/lib/gates";
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 
 export default async function AdminPage() {
-  const user = await currentUser();
+  const [user, gates] = await Promise.all([currentUser(), getGates()]);
   const name =
     user?.firstName ??
     user?.username ??
@@ -35,30 +37,20 @@ export default async function AdminPage() {
           Welcome back, {name}.
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-          This is your control surface. The public site stays open; only this
-          area requires a signed-in session.
+          Toggle a site private to require Clerk login. Public sites stay open.
         </p>
 
-        <ul className="mt-12 space-y-4 border-t border-border pt-10 text-sm text-muted-foreground">
-          <li>
-            <span className="text-foreground">Session</span> — signed in via
-            Clerk
-            {user?.primaryEmailAddress?.emailAddress
-              ? ` as ${user.primaryEmailAddress.emailAddress}`
-              : ""}
-            .
-          </li>
-          <li>
-            <span className="text-foreground">Access</span> — gated by{" "}
-            <code className="font-mono text-xs">requireAdmin()</code>; public
-            sign-up is disabled in Clerk.
-          </li>
-          <li>
-            <span className="text-foreground">Next</span> — drop tools,
-            drafts, and ops surfaces under{" "}
-            <code className="font-mono text-xs">/admin/*</code>.
-          </li>
-        </ul>
+        <section className="mt-12">
+          <h2 className="font-display text-xl font-semibold tracking-tight">
+            Fleet gates
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            On = private (login required). Changes apply within about a minute.
+          </p>
+          <div className="mt-6">
+            <FleetGates apps={GATED_APPS} initialGates={gates} />
+          </div>
+        </section>
       </main>
     </div>
   );
