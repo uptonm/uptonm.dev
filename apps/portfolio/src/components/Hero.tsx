@@ -1,6 +1,5 @@
 import { copy } from "@/lib/copy";
 import { socialIcon } from "@/components/icons";
-import { Reveal } from "@/components/Reveal";
 import avatarImg from "@/public/avatar.jpeg";
 import Image from "next/image";
 
@@ -9,27 +8,23 @@ export function Hero() {
     <section id="top" className="mx-auto max-w-5xl px-6 pt-32 pb-16 md:pt-40">
       <div className="grid items-center gap-12 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <Reveal className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
             </span>
             {copy.home.availability} · {copy.home.location}
-          </Reveal>
+          </div>
 
-          <Reveal delay={60}>
-            <h1 className="font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-              {copy.home.tagline}
-            </h1>
-          </Reveal>
+          <h1 className="font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            {copy.home.tagline}
+          </h1>
 
-          <Reveal delay={120}>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              {copy.brand.role} — based in {copy.home.location}.
-            </p>
-          </Reveal>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            {copy.brand.role} — based in {copy.home.location}.
+          </p>
 
-          <Reveal delay={180} className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
               href="#work"
               className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-on-brand transition-colors hover:bg-brand-hover"
@@ -54,10 +49,10 @@ export function Hero() {
                 {socialIcon(s.key, "h-5 w-5")}
               </a>
             ))}
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={120} className="justify-self-center md:justify-self-end">
+        <div className="justify-self-center md:justify-self-end">
           <div className="rounded-[2rem] border border-border bg-card p-2 shadow-[0_30px_60px_-34px_rgba(0,0,0,0.35)]">
             <Image
               src={avatarImg}
@@ -68,7 +63,7 @@ export function Hero() {
               className="portrait h-56 w-56 rounded-[1.6rem] object-cover sm:h-72 sm:w-72"
             />
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

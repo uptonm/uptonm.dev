@@ -16,11 +16,28 @@ type RevealProps = {
  */
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
+  // Visible is the safe default: server-rendered and no-JS pages should never
+  // hide their content for the sake of an optional entrance animation.
+  const [shown, setShown] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (
+      !el ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    // Keep anything already in or near the first viewport visible. Only
+    // below-the-fold content is prepared for a scroll-triggered reveal.
+    if (el.getBoundingClientRect().top <= window.innerHeight * 1.05) {
+      return;
+    }
+
+    setShown(false);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
