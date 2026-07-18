@@ -1,12 +1,6 @@
 import { copy } from "@/lib/copy";
 import { Reveal } from "@/components/Reveal";
 
-const stats = [
-  { value: "2018", label: "shipping since" },
-  { value: "Meta", label: "current team" },
-  { value: "Rust", label: "favorite lately" },
-];
-
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-5xl px-6 py-20 md:py-24">
@@ -16,7 +10,7 @@ export function About() {
             {copy.sections.about}
           </p>
           <h2 className="mt-3 font-display text-3xl font-light leading-snug md:text-4xl">
-            A little about how I got here.
+            I care about how the whole system fits together.
           </h2>
         </Reveal>
         <Reveal delay={80}>
@@ -25,17 +19,13 @@ export function About() {
               <p key={para}>{para}</p>
             ))}
           </div>
-          <div className="mt-8 grid grid-cols-3 gap-6 border-t border-border pt-8">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <div className="font-display text-3xl font-normal text-brand-strong md:text-4xl">
-                  {s.value}
-                </div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  {s.label}
-                </div>
-              </div>
-            ))}
+          <div className="mt-8 border-t border-border pt-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
+              Current focus
+            </p>
+            <p className="mt-2 font-display text-2xl text-foreground">
+              {copy.home.currentFocus}
+            </p>
           </div>
         </Reveal>
       </div>
