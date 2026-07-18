@@ -50,10 +50,8 @@ export default async function AdminPage() {
           </li>
           <li>
             <span className="text-foreground">Access</span> — gated by{" "}
-            <code className="font-mono text-xs">requireAdmin()</code>
-            {process.env.ADMIN_ALLOWED_EMAILS
-              ? " with an email allowlist."
-              : " (any signed-in user until ADMIN_ALLOWED_EMAILS is set)."}
+            <code className="font-mono text-xs">requireAdmin()</code>; public
+            sign-up is disabled in Clerk.
           </li>
           <li>
             <span className="text-foreground">Next</span> — drop tools,
