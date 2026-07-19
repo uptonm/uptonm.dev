@@ -127,13 +127,28 @@ function normalizeGates(raw: unknown): Gates {
   return next;
 }
 
-/** Read gate flags from the ops org `publicMetadata.gates`. */
+/**
+ * Read gate flags from the ops org `publicMetadata.gates`.
+ *
+ * Read-path only: if the ops org is unconfigured or unreachable (e.g. a preview
+ * env without `GATES_ORG_ID`, or a Clerk instance that lacks the org), fall
+ * back to defaults so the admin dashboard still renders instead of 500ing. The
+ * write path (`setGate`) stays strict — a misconfigured write must fail loudly.
+ */
 export async function getGates(): Promise<Gates> {
-  const client = await clerkClient();
-  const org = await client.organizations.getOrganization({
-    organizationId: gatesOrgId(),
-  });
-  return normalizeGates(org.publicMetadata?.gates);
+  try {
+    const client = await clerkClient();
+    const org = await client.organizations.getOrganization({
+      organizationId: gatesOrgId(),
+    });
+    return normalizeGates(org.publicMetadata?.gates);
+  } catch (error) {
+    console.warn(
+      "getGates: falling back to default gates —",
+      error instanceof Error ? error.message : error,
+    );
+    return { ...DEFAULT_GATES };
+  }
 }
 
 /**
