@@ -26,7 +26,7 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-colors",
+        "fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top)] transition-colors",
         scrolled && "border-b border-border bg-background/80 backdrop-blur",
       )}
     >
