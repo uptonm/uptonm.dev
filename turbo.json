@@ -19,7 +19,8 @@
         "github_pat",
         "VERCEL_TOKEN",
         "vercel_pat",
-        "VERCEL_TEAM_ID"
+        "VERCEL_TEAM_ID",
+        "DATABASE_URL"
       ]
     },
     "lint": {
@@ -27,6 +28,9 @@
     },
     "check-types": {
       "dependsOn": ["^check-types"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
     },
     "dev": {
       "cache": false,

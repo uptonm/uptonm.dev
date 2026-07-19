@@ -8,14 +8,21 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.5.20",
+    "@neondatabase/serverless": "^1.1.0",
     "@uptonm/ui": "workspace:*",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "dayjs": "^1.11.21",
+    "drizzle-orm": "^0.45.2",
     "lucide-react": "^1.16.0",
     "next": "^16.2.6",
     "react": "^19.2.0",
@@ -29,8 +36,10 @@
     "@types/react-dom": "^19.2.3",
     "@uptonm/eslint-config": "workspace:*",
     "@uptonm/typescript-config": "workspace:*",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9.39.5",
     "tailwindcss": "^4.3.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
   }
 }
