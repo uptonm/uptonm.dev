@@ -53,6 +53,20 @@ function isErrorStatus(status: string): boolean {
   return status === "error";
 }
 
+/**
+ * Run a best-effort persistence call. The observation — not the database — is
+ * the product, so a DB failure (a Neon connection cap under concurrent load,
+ * a transient error) must degrade to `fallback` rather than escape and crash
+ * the caller. This is what keeps collect()'s "never throws" contract honest.
+ */
+async function safeDb<R>(fn: () => Promise<R>, fallback: R): Promise<R> {
+  try {
+    return await fn();
+  } catch {
+    return fallback;
+  }
+}
+
 function withStaleAt<T>(
   observation: Observation<T>,
   revalidateSeconds: number,
@@ -98,18 +112,21 @@ export async function collect<T>({
   const revalidate = revalidateSeconds ?? COLLECTION_INTERVALS_SECONDS[category];
   const startedAt = Date.now();
 
-  let runId: string | null = null;
-  if (dbEnabled) {
-    runId = await startCollectionRun({ appId, category, trigger });
-  }
+  const runId: string | null = dbEnabled
+    ? await safeDb(() => startCollectionRun({ appId, category, trigger }), null)
+    : null;
 
   const finish = async (status: string, error?: string): Promise<void> => {
     if (!dbEnabled || !runId) return;
-    await finishCollectionRun(runId, {
-      status,
-      error: error ?? null,
-      durationMs: Date.now() - startedAt,
-    });
+    await safeDb(
+      () =>
+        finishCollectionRun(runId, {
+          status,
+          error: error ?? null,
+          durationMs: Date.now() - startedAt,
+        }),
+      undefined,
+    );
   };
 
   const degrade = async (
@@ -118,7 +135,7 @@ export async function collect<T>({
   ): Promise<Observation<T>> => {
     if (dbEnabled) {
       const recovered = lastKnownGood<T>(
-        await latestObservation(appId, category),
+        await safeDb(() => latestObservation(appId, category), null),
       );
       if (recovered) {
         await finish("degraded", error);
@@ -148,7 +165,10 @@ export async function collect<T>({
       : observation;
 
     if (dbEnabled) {
-      await recordObservation({ appId, category, observation: fresh, runId });
+      await safeDb(
+        () => recordObservation({ appId, category, observation: fresh, runId }),
+        undefined,
+      );
     }
     await finish("ok");
     return fresh;
