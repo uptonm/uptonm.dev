@@ -1,11 +1,11 @@
 import { AttentionList } from "@/components/fleet/AttentionList";
 import { ConsoleNav } from "@/components/fleet/ConsoleNav";
-import { buildAttentionFeed } from "@/components/fleet/sample";
+import { getFleetAttention } from "@/lib/fleet/console-data";
 import { FLEET_APPS } from "@/lib/fleet/registry";
 import Link from "next/link";
 
-export default function AttentionPage() {
-  const items = buildAttentionFeed();
+export default async function AttentionPage() {
+  const items = await getFleetAttention();
   const navApps = FLEET_APPS.map(({ id, label }) => ({ id, label }));
 
   return (

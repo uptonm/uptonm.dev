@@ -1,11 +1,11 @@
 import { ActivityTimeline } from "@/components/fleet/ActivityTimeline";
 import { ConsoleNav } from "@/components/fleet/ConsoleNav";
-import { buildActivity } from "@/components/fleet/sample";
+import { getFleetActivity } from "@/lib/fleet/console-data";
 import { FLEET_APPS } from "@/lib/fleet/registry";
 import Link from "next/link";
 
-export default function ActivityPage() {
-  const entries = buildActivity();
+export default async function ActivityPage() {
+  const entries = await getFleetActivity();
   const navApps = FLEET_APPS.map(({ id, label }) => ({ id, label }));
 
   return (

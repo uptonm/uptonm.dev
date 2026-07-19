@@ -3,7 +3,7 @@ import { ActivityTimeline } from "@/components/fleet/ActivityTimeline";
 import { ConsoleNav } from "@/components/fleet/ConsoleNav";
 import { MetricTile } from "@/components/fleet/MetricTile";
 import { ObservationBoundary } from "@/components/fleet/ObservationState";
-import { buildAppDetailSample } from "@/components/fleet/sample";
+import { getAppDetail } from "@/lib/fleet/console-data";
 import { FLEET_APPS, getFleetApp } from "@/lib/fleet/registry";
 import type { FleetAppId } from "@/lib/fleet/registry";
 import { ArrowUpRight } from "lucide-react";
@@ -20,7 +20,7 @@ export default async function AppDetailPage({
   const app = getFleetApp(appId as FleetAppId);
   if (!app) notFound();
 
-  const sample = buildAppDetailSample(app.id);
+  const sample = await getAppDetail(app.id);
   const navApps = FLEET_APPS.map(({ id, label }) => ({ id, label }));
 
   return (
