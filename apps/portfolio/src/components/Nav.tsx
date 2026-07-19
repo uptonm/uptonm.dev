@@ -27,7 +27,12 @@ export function Nav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top,0px)] transition-colors",
-        scrolled && "border-b border-border bg-background",
+        // On iOS Safari with the toolbar collapsed, fixed elements pin to the
+        // layout viewport, whose top sits below the status-bar/notch strip —
+        // the document scrolls up into that strip past the header. The
+        // upward ::before paints the strip so content can't appear there.
+        scrolled &&
+          "border-b border-border bg-background before:absolute before:inset-x-0 before:bottom-full before:h-32 before:bg-background before:content-['']",
       )}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
