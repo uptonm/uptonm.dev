@@ -20,7 +20,9 @@
         "VERCEL_TOKEN",
         "vercel_pat",
         "VERCEL_TEAM_ID",
-        "DATABASE_URL"
+        "DATABASE_URL",
+        "FLEET_ADMIN_USER_IDS",
+        "FLEET_OPERATOR_USER_IDS"
       ]
     },
     "lint": {
