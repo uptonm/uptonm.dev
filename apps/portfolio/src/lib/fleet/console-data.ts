@@ -4,7 +4,11 @@ import { unstable_cache } from "next/cache";
 import { recentAudit } from "@/lib/fleet/audit";
 import { collectApp } from "@/lib/fleet/collectors";
 import { deriveAttention } from "@/lib/fleet/derive/attention";
-import { sortBySeverity } from "@/lib/fleet/derive/health";
+import {
+  type AppHealth,
+  deriveAppHealth,
+  sortBySeverity,
+} from "@/lib/fleet/derive/health";
 import { presentAppDetail } from "@/lib/fleet/present";
 import { FLEET_APPS, getFleetApp, type FleetAppId } from "@/lib/fleet/registry";
 import type {
@@ -54,6 +58,62 @@ async function loadAttention(): Promise<AttentionItem[]> {
 /** Live fleet-wide attention feed, severity-sorted. */
 export function getFleetAttention(): Promise<AttentionItem[]> {
   return unstable_cache(loadAttention, ["fleet-console-attention"], {
+    revalidate: CONSOLE_REVALIDATE_SECONDS,
+    tags: ["fleet-console"],
+  })();
+}
+
+export type OverviewApp = {
+  id: FleetAppId;
+  label: string;
+  url: string;
+  iconSrc: string;
+  isControlPlane: boolean;
+  health: AppHealth;
+};
+
+export type FleetOverview = {
+  attention: AttentionItem[];
+  apps: OverviewApp[];
+};
+
+async function loadOverview(): Promise<FleetOverview> {
+  const observedAt = new Date().toISOString();
+  const perApp = await Promise.all(
+    FLEET_APPS.map(async (app) => ({ app, obs: await collectApp(app) })),
+  );
+
+  const attention = sortBySeverity(
+    perApp.flatMap(({ obs }) => deriveAttention(obs)),
+  ).map(
+    (signal): AttentionItem => ({
+      id: signal.fingerprint,
+      appId: signal.appId,
+      appLabel: labelOf(signal.appId),
+      severity: signal.severity,
+      title: signal.title,
+      detail: signal.detail,
+      observedAt,
+    }),
+  );
+
+  const apps = perApp.map(
+    ({ app, obs }): OverviewApp => ({
+      id: app.id,
+      label: app.label,
+      url: app.url,
+      iconSrc: app.iconSrc,
+      isControlPlane: app.isControlPlane,
+      health: deriveAppHealth(obs),
+    }),
+  );
+
+  return { attention, apps };
+}
+
+/** Live console home: attention queue + per-app health, collected once. */
+export function getFleetOverview(): Promise<FleetOverview> {
+  return unstable_cache(loadOverview, ["fleet-console-overview"], {
     revalidate: CONSOLE_REVALIDATE_SECONDS,
     tags: ["fleet-console"],
   })();
