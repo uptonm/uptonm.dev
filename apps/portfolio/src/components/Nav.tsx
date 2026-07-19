@@ -26,8 +26,8 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-colors",
-        scrolled && "border-b border-border bg-background/80 backdrop-blur",
+        "fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top,0px)] transition-colors",
+        scrolled && "border-b border-border bg-background/95 backdrop-blur",
       )}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
