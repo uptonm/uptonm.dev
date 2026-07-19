@@ -15,45 +15,88 @@ export type GatedApp = {
   label: string;
   url: string;
   iconSrc: string;
+  github: {
+    owner: string;
+    repo: string;
+  };
+  vercel: {
+    projectId: string;
+    projectName: string;
+  };
 };
 
-/** Registry of personal sites that can be login-gated via Clerk org metadata. */
+/**
+ * Registry of personal sites and their control-plane identities.
+ *
+ * Keeping Clerk, GitHub, and Vercel identifiers together prevents dashboard
+ * telemetry from drifting away from the site controlled by each gate.
+ */
 export const GATED_APPS: readonly GatedApp[] = [
   {
     id: "budget",
     label: "Budget",
     url: "https://budget.uptonm.dev",
     iconSrc: "/gates/budget.png",
+    github: { owner: "uptonm", repo: "budget" },
+    vercel: {
+      projectId: "prj_ZDwVui2ChKODqXJGier9v6HEVpFj",
+      projectName: "budget",
+    },
   },
   {
     id: "facet",
     label: "Facet",
     url: "https://facet.uptonm.dev",
     iconSrc: "/gates/facet.png",
+    github: { owner: "uptonm", repo: "facet" },
+    vercel: {
+      projectId: "prj_TUalUAUdWYpTyN4GIVZQYAN25RoL",
+      projectName: "facet",
+    },
   },
   {
     id: "home",
     label: "Home",
     url: "https://home.uptonm.dev",
     iconSrc: "/gates/home.png",
+    github: { owner: "uptonm", repo: "home" },
+    vercel: {
+      projectId: "prj_nj4Rdy5a5ZZfnYw4o01Uw7NAut0s",
+      projectName: "home",
+    },
   },
   {
     id: "cairn",
     label: "Cairn",
     url: "https://cairn.uptonm.dev",
     iconSrc: "/gates/cairn.png",
+    github: { owner: "uptonm", repo: "cairn" },
+    vercel: {
+      projectId: "prj_bAtU7VLbmDJ5W6drW6IkFzuMrVr2",
+      projectName: "cairn",
+    },
   },
   {
     id: "maplibre-gl-style-editor",
     label: "Map",
     url: "https://map.uptonm.dev",
     iconSrc: "/gates/maplibre-gl-style-editor.png",
+    github: { owner: "uptonm", repo: "maplibre-gl-style-editor" },
+    vercel: {
+      projectId: "prj_qWUibNeus2300Ff0kbx1O6wW6QCu",
+      projectName: "maplibre-gl-style-editor",
+    },
   },
   {
     id: "convert-kit",
     label: "Convert",
     url: "https://convert.uptonm.dev",
     iconSrc: "/gates/convert-kit.png",
+    github: { owner: "uptonm", repo: "convert-kit" },
+    vercel: {
+      projectId: "prj_ilghrjLs0ZDLKd9b1eeiR1TgEuve",
+      projectName: "convert-kit",
+    },
   },
 ] as const;
 
@@ -84,13 +127,28 @@ function normalizeGates(raw: unknown): Gates {
   return next;
 }
 
-/** Read gate flags from the ops org `publicMetadata.gates`. */
+/**
+ * Read gate flags from the ops org `publicMetadata.gates`.
+ *
+ * Read-path only: if the ops org is unconfigured or unreachable (e.g. a preview
+ * env without `GATES_ORG_ID`, or a Clerk instance that lacks the org), fall
+ * back to defaults so the admin dashboard still renders instead of 500ing. The
+ * write path (`setGate`) stays strict — a misconfigured write must fail loudly.
+ */
 export async function getGates(): Promise<Gates> {
-  const client = await clerkClient();
-  const org = await client.organizations.getOrganization({
-    organizationId: gatesOrgId(),
-  });
-  return normalizeGates(org.publicMetadata?.gates);
+  try {
+    const client = await clerkClient();
+    const org = await client.organizations.getOrganization({
+      organizationId: gatesOrgId(),
+    });
+    return normalizeGates(org.publicMetadata?.gates);
+  } catch (error) {
+    console.warn(
+      "getGates: falling back to default gates —",
+      error instanceof Error ? error.message : error,
+    );
+    return { ...DEFAULT_GATES };
+  }
 }
 
 /**

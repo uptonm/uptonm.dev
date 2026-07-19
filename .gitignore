@@ -8,3 +8,12 @@ node_modules
 .env*.local
 .vercel
 .env*
+
+# Locally installed agent skill tooling (Neon integration)
+.agents/
+.claude/skills/neon
+.claude/skills/neon-postgres
+skills-lock.json
+
+# Local git worktrees (e.g. parallel branch work)
+.claude/worktrees/

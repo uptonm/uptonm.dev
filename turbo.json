@@ -14,7 +14,16 @@
         "CLERK_SECRET_KEY",
         "NEXT_PUBLIC_CLERK_SIGN_IN_URL",
         "NEXT_PUBLIC_CLERK_SIGN_UP_URL",
-        "GATES_ORG_ID"
+        "GATES_ORG_ID",
+        "GITHUB_TOKEN",
+        "github_pat",
+        "VERCEL_TOKEN",
+        "vercel_pat",
+        "VERCEL_TEAM_ID",
+        "DATABASE_URL",
+        "FLEET_ADMIN_USER_IDS",
+        "FLEET_OPERATOR_USER_IDS",
+        "FLEET_ACTIONS_ENABLED"
       ]
     },
     "lint": {
@@ -22,6 +31,9 @@
     },
     "check-types": {
       "dependsOn": ["^check-types"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
     },
     "dev": {
       "cache": false,
