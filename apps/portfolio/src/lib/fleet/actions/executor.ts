@@ -284,8 +284,11 @@ export async function rollbackProduction(
       requireActionsEnabled();
       const { token, teamId } = requireVercelCredentials();
       const query = new URLSearchParams({ teamId });
+      // Verified against Vercel docs: POST /v1/projects/{id}/rollback/{deploymentId}
+      // reverts production traffic to the target deployment at the routing layer.
+      // https://vercel.com/docs/deployments/rollback-production-deployment
       await fetchJson<unknown>(
-        `https://api.vercel.com/v9/projects/${encodeURIComponent(
+        `https://api.vercel.com/v1/projects/${encodeURIComponent(
           app.vercel.projectId,
         )}/rollback/${encodeURIComponent(targetDeploymentId)}?${query.toString()}`,
         {
