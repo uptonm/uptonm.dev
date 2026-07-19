@@ -100,7 +100,13 @@ export default function RootLayout({
         />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-screen overflow-x-hidden">
+      {/*
+        The document itself must never scroll: on iOS Safari the page canvas
+        paints full-bleed into the status-bar/notch strip above the layout
+        viewport, so any document scroll shows content there. Scrolling lives
+        in #scroll-root instead, which clips its content at its own top edge.
+      */}
+      <body className="h-dvh overflow-hidden">
         <ClerkProvider appearance={clerkAppearance}>
           <a
             href="#main-content"
@@ -108,7 +114,14 @@ export default function RootLayout({
           >
             Skip to main content
           </a>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <div
+              id="scroll-root"
+              className="h-full overflow-x-hidden overflow-y-auto scroll-smooth"
+            >
+              {children}
+            </div>
+          </ThemeProvider>
           <Analytics />
           <SpeedInsights />
         </ClerkProvider>
