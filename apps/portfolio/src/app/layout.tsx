@@ -5,7 +5,7 @@ import { copy } from "@/lib/copy";
 import { ThemeProvider } from "@uptonm/ui/components/utils/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 
 const fraunces = Fraunces({
@@ -55,10 +55,6 @@ export const metadata: Metadata = {
     description: copy.seo.description,
     images: [new URL("/og.jpg", copy.brand.url).toString()],
   },
-};
-
-export const viewport: Viewport = {
-  viewportFit: "cover",
 };
 
 const structuredData = {
